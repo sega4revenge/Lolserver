@@ -23,7 +23,7 @@ module.exports = router => {
 		}, function(err, response, body) {
             const keys = Object.keys(body.data);
 			res.json(body);
-            for(let i = 0; i < key.length(); i++){
+            for(let i = 0; i < keys.length; i++){
                 console.log(keys[i]);
             }
 			/*MongoClient.connect(url, function(err, db) {
