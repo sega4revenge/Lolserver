@@ -22,9 +22,7 @@ module.exports = router => {
 			json: true
 		}, function(err, response, body) {
             console.log(body.data);
-            const obj = JSON.parse(body);
-            console.log(obj.data);
-            var keys = Object.keys(obj.data);
+            var keys = Object.keys(body.data);
             console.log('obj contains ' + keys.length + ' keys: '+  keys);
 			res.json(body);
 			/*MongoClient.connect(url, function(err, db) {
