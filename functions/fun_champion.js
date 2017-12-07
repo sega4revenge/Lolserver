@@ -10,7 +10,7 @@ exports.championUser = (name) =>
 
 		champion.find({id: name})
             .populate({
-                path: "skin spell"
+                path: "skins spells"
             })
 			.then(champions => {
 
