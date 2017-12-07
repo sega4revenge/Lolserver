@@ -2,7 +2,7 @@
 
 
 const request = require("request");
-const skin = new require("../models/skin");
+const skin = new require("../models/user");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 
