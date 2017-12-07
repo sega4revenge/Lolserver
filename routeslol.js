@@ -86,6 +86,15 @@ module.exports = router => {
                             newSpell.save();
                             newChampion.spells.push(newSpell);
                         }
+                        for (let i = 0; i < body.data[name].allytips.length; i++) {
+                          newChampion.allytips.push(body.data[name].allytips[i]);
+                        }
+                        for (let i = 0; i < body.data[name].enemytips.length; i++) {
+                            newChampion.enemytips.push(body.data[name].enemytips[i]);
+                        }
+                        for (let i = 0; i < body.data[name].tags.length; i++) {
+                            newChampion.tags.push(body.data[name].tags[i]);
+                        }
                         for (let i = 0; i < body.data[name].skins.length; i++) {
                             let newSkin = new skin({
                                 id: body.data[name].skins[i].id,
@@ -98,6 +107,7 @@ module.exports = router => {
                             newSkin.save();
                             newChampion.skins.push(newSkin);
                         }
+
                         newChampion.save();
                         page++;
                         next();
