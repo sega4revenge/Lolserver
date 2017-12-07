@@ -30,6 +30,7 @@ module.exports = router => {
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                         json: true
                     }, function (err, response, body) {
+                        console.log(name);
                         let newChampion = new champion({
                             id             : body.data[name].id,
                             key : body.data[name].key,
@@ -70,7 +71,7 @@ module.exports = router => {
                             passive : {
                                 name :body.data[name].passive.name,
                                 description : body.data[name].passive.description,
-                                imagePassive : body.data[name].passive.imagePassive
+                                imagePassive : "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/" + body.data[name].passive.image.full
                             }
                         });
                         for (let i = 0; i < body.data[name].skins.length; i++) {
