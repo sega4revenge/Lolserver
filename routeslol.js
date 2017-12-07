@@ -22,7 +22,6 @@ module.exports = router => {
 			json: true
 		}, function(err, response, body) {
             const keys = Object.keys(body.data);
-			res.json(body);
             for(let i = 0; i < keys.length; i++){
                 request({
                     method: "GET",
