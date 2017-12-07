@@ -5,6 +5,7 @@ const request = require("request");
 const skin = new require("./models/skin");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
+const async = require("async");
 
 const url = "mongodb://sega:sega4deptrai@45.77.36.109:27017/lol?authSource=admin";
 module.exports = router => {
