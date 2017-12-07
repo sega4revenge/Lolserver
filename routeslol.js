@@ -23,6 +23,7 @@ module.exports = router => {
                     return page <= keys.length;
                 },
                 function (next) {
+                    var name = keys[page];
                     request({
                         method: "GET",
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
