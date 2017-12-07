@@ -11,12 +11,13 @@ module.exports = router => {
     function getData(name) {
 
         return new Promise(function (resolve, reject) {
-            console.log(name);
+
             request({
                 method: "GET",
                 url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                 json: true
             }, function (err, response, body) {
+                console.log(name);
                 if(err) reject({status: 500, message: err.message});
                 const promises = [];
                 for (let i = 0; i < body.data[name].skins.length; i++) {
@@ -75,7 +76,7 @@ module.exports = router => {
     function storeData(name) {
 
         return new Promise(function (resolve, reject) {
-            console.log(name);
+
         });
     }
     router.get('/listchampion', function (req, res) {
