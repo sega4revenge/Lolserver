@@ -16,6 +16,7 @@ module.exports = router => {
                 json: true
             }, function (err, response, body) {
                 if(err) reject({status: 500, message: err.message});
+                console.log(body.data[name].name);
                 for (let i = 0; i < body.data[name].skins.length; i++) {
                    let newSkin = new skin({
                        id             : body.data[name].skins[i].id,
@@ -26,7 +27,6 @@ module.exports = router => {
                        imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+ body.data[name].name+"_"+body.data[name].skins[i].num +".jpg"
                    });
                     newSkin.save();
-                    console.log(newSkin.imageLoading);
                 }
                 resolve({
                     status: 202,
