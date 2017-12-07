@@ -11,7 +11,7 @@ module.exports = router => {
 
     router.get('/listchampion', function (req, res) {
         const promise = function (check) {
-            return Q.promise(function (resolve, reject,) {
+            return Q.promise(function (resolve, reject) {
                 if (check) {
                     resolve("Resolve it");
                 } else {
