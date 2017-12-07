@@ -23,12 +23,13 @@ module.exports = router => {
                     return page <= keys.length;
                 },
                 function (next) {
-                    var name = keys[page];
+                    const name = keys[page];
                     request({
                         method: "GET",
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                         json: true
                     }, function (err, response, body) {
+                        console.log(name);
                         for (let i = 0; i < body.data[name].skins.length; i++) {
                             let newSkin = new skin({
                                 id: body.data[name].skins[i].id,
