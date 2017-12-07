@@ -115,8 +115,8 @@ module.exports = router => {
                                 num: body.data[name].skins[i].num,
                                 name: body.data[name].skins[i].name,
                                 chromas: body.data[name].skins[i].chromas,
-                                imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].name + "_" + body.data[name].skins[i].num + ".jpg",
-                                imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].name + "_" + body.data[name].skins[i].num + ".jpg"
+                                imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "/_" + body.data[name].skins[i].num + ".jpg",
+                                imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "/_" + body.data[name].skins[i].num + ".jpg"
                             });
                             newSkin.save();
                             newChampion.skins.push(newSkin);
