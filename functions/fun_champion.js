@@ -9,7 +9,9 @@ exports.championUser = (name) =>
 
 
 		champion.find({id: name})
-
+            .populate({
+                path: "skin spell"
+            })
 			.then(champions => {
 
 				if (champions.length === 0) {
