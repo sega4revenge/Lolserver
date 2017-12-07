@@ -9,7 +9,9 @@ const championSchema = mongoose.Schema({
     name : String,
     chromas : String,
     price : String,
-    type: String
+    type: String,
+    imageLoading : String,
+    imageFull : String
 });
 
 mongoose.Promise = global.Promise;

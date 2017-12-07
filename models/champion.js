@@ -5,8 +5,8 @@ const Schema = require("mongoose/lib/schema");
 
 const championSchema = mongoose.Schema({
     id             : String,
-	key : String,
-	name : String,
+    key : String,
+    name : String,
     title    : String,
     imageAvatar : String,
     skins : [{type: Schema.Types.ObjectId, ref: 'skin'}],
