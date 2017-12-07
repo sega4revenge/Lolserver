@@ -2,7 +2,7 @@
 
 
 const request = require("request");
-var Q = require("q");
+const Q = require("q");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 
