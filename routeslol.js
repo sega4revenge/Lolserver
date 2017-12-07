@@ -18,8 +18,19 @@ module.exports = router => {
                 json: true
             }, function (err, response, body) {
                 if(err) reject({status: 500, message: err.message});
-
+                const promises = [];
                 for (let i = 0; i < body.data[name].skins.length; i++) {
+                    promises.push(storeData(body.data[name].skins[i].name));
+                }
+                Promise.all(promises)
+                    .then(result => {
+
+                    })
+                    .catch(err => {
+
+                    });
+
+            /*    for (let i = 0; i < body.data[name].skins.length; i++) {
                    let newSkin = new skin({
                        id             : body.data[name].skins[i].id,
                        num : body.data[name].skins[i].num,
@@ -29,7 +40,7 @@ module.exports = router => {
                        imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/"+ body.data[name].name+"_"+body.data[name].skins[i].num +".jpg"
                    });
                     newSkin.save();
-                }
+                }*/
                 resolve({
                     status: 202,
                     message: "success"
@@ -61,7 +72,12 @@ module.exports = router => {
             // return reject([error object]) in case of error
         });
     }
+    function storeData(name) {
 
+        return new Promise(function (resolve, reject) {
+            console.log(name);
+        });
+    }
     router.get('/listchampion', function (req, res) {
 
         console.log("bat dau");
