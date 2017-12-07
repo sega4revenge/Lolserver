@@ -21,8 +21,8 @@ module.exports = router => {
 			url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
 			json: true
 		}, function(err, response, body) {
-            console.log(body.data);
             var keys = Object.keys(body.data);
+            console.log(keys.get(0));
             console.log('obj contains ' + keys.length + ' keys: '+  keys);
 			res.json(body);
 			/*MongoClient.connect(url, function(err, db) {
