@@ -3,7 +3,7 @@
 const mongoose = require("./connect");
 const Schema = require("mongoose/lib/schema");
 
-const championSchema = mongoose.Schema({
+const spellSchema = mongoose.Schema({
     id             : String,
 	name : String,
     description : String,
@@ -12,4 +12,4 @@ const championSchema = mongoose.Schema({
 
 mongoose.Promise = global.Promise;
 
-module.exports = mongoose.model('spell', championSchema);
+module.exports = mongoose.model('spell', spellSchema);

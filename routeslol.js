@@ -4,6 +4,7 @@
 const request = require("request");
 const skin = new require("./models/skin");
 const champion = new require("./models/champion");
+const spell = new require("./models/spell");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const async = require("async");
@@ -74,6 +75,17 @@ module.exports = router => {
                                 imagePassive : "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/" + body.data[name].passive.image.full
                             }
                         });
+                        for (let i = 0; i < body.data[name].spells.length; i++) {
+                            let newSpell = new spell({
+                                id: body.data[name].spells[i].id,
+                                name: body.data[name].spells[i].name,
+                                description : body.data[name].spells[i].description,
+                                tooltip : body.data[name].spells[i].tooltip
+
+                            });
+                            newSpell.save();
+                            newChampion.spells.push(newSpell);
+                        }
                         for (let i = 0; i < body.data[name].skins.length; i++) {
                             let newSkin = new skin({
                                 id: body.data[name].skins[i].id,
