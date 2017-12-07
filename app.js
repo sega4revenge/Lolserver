@@ -4,7 +4,7 @@ const express    = require('express');
 const app        = express();
 const bodyParser = require('body-parser');
 const router        = express.Router();
-
+const logger        = require('morgan');
 const server = require("http").createServer(app);
 const port        = process.env.PORT || 8000;
 app.use(bodyParser.json());
