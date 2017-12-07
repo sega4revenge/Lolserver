@@ -21,10 +21,11 @@ module.exports = router => {
 			url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
 			json: true
 		}, function(err, response, body) {
-            var keys = Object.keys(body.data);
-            console.log(keys[0]);
-            console.log('obj contains ' + keys.length + ' keys: '+  keys);
+            const keys = Object.keys(body.data);
 			res.json(body);
+            for(let i = 0; i < key.length(); i++){
+                console.log(keys[i]);
+            }
 			/*MongoClient.connect(url, function(err, db) {
 				assert.equal(null, err);
 				db.collection('champion').insertOne( {body
