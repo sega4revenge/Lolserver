@@ -24,14 +24,13 @@ module.exports = router => {
             const keys = Object.keys(body.data);
 			res.json(body);
             for(let i = 0; i < keys.length; i++){
-                console.log(keys[i]);
                 request({
                     method: "GET",
                     url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/"+keys[i]+".json",
                     json: true
                 }, function(err, response, body) {
                   /*  const keys = Object.keys(body.data);*/
-                    res.json(body.data.keys[i].skins);
+                    res.json(body.data.keys[i]);
                    /* for(let i = 0; i < keys.length; i++){
                         console.log(keys[i]);
                     }*/
