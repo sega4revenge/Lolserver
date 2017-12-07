@@ -3,6 +3,7 @@
 
 const request = require("request");
 const skin = new require("./models/skin");
+const fun_champion = new require("./functions/fun_champion");
 const champion = new require("./models/champion");
 const spell = new require("./models/spell");
 const MongoClient = require("mongodb").MongoClient;
@@ -11,6 +12,19 @@ const async = require("async");
 
 const url = "mongodb://sega:sega4deptrai@45.77.36.109:27017/lol?authSource=admin";
 module.exports = router => {
+    router.get('/data/:id', (req, res) => {
+
+        console.log("name champion"+req.params.id);
+        const id = req.params.id;
+       fun_champion.championUser(id)
+
+            .then(result => res.json(result))
+
+            .catch(err => res.status(err.status).json({message: err.message}));
+
+
+    });
+
     router.get('/listchampion', function (req, res) {
 
         console.log("bat dau");
