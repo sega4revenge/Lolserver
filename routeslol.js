@@ -10,13 +10,14 @@ const url = "mongodb://sega:sega4deptrai@45.77.36.109:27017/lol?authSource=admin
 module.exports = router => {
     function getData(name) {
         return new Promise(function (resolve, reject) {
+            console.log(name);
             request({
                 method: "GET",
                 url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                 json: true
             }, function (err, response, body) {
                 if(err) reject({status: 500, message: err.message});
-                console.log(body.data[name].name);
+
                 for (let i = 0; i < body.data[name].skins.length; i++) {
                    let newSkin = new skin({
                        id             : body.data[name].skins[i].id,
