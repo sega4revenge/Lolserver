@@ -25,6 +25,29 @@ module.exports = router => {
 			res.json(body);
             for(let i = 0; i < keys.length; i++){
                 console.log(keys[i]);
+                request({
+                    method: "GET",
+                    url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/"+keys[i]+".json",
+                    json: true
+                }, function(err, response, body) {
+                  /*  const keys = Object.keys(body.data);*/
+                    res.json(body.data.keys[i].skins);
+                   /* for(let i = 0; i < keys.length; i++){
+                        console.log(keys[i]);
+                    }*/
+                    /*MongoClient.connect(url, function(err, db) {
+                        assert.equal(null, err);
+                        db.collection('champion').insertOne( {body
+                        }, function(err, result) {
+                            assert.equal(err, null);
+                            console.log("Inserted a document into the restaurants collection.");
+                            db.close();
+                        });
+                    });*/
+
+
+
+                })
             }
 			/*MongoClient.connect(url, function(err, db) {
 				assert.equal(null, err);
