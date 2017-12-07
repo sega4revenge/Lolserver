@@ -15,7 +15,7 @@ module.exports = router => {
 
 	router.get('/listchampion', function(req, res){
 
-
+        console.log("bat dau");
 		request({
 			method: "GET",
 			url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
