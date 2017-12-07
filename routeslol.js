@@ -29,7 +29,7 @@ module.exports = router => {
                     json: true
                 }, function(err, response, body) {
                   /*  const keys = Object.keys(body.data);*/
-                    console.log(body.data);
+                    console.log(body.data.keys[i]);
                    /* for(let i = 0; i < keys.length; i++){
                         console.log(keys[i]);
                     }*/
