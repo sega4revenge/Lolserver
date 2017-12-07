@@ -2,7 +2,6 @@
 
 
 const request = require("request");
-const champion = new require("../models/champion");
 const skin = new require("../models/skin");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
@@ -11,7 +10,6 @@ const url = "mongodb://sega:sega4deptrai@45.77.36.109:27017/lol?authSource=admin
 module.exports = router => {
     function getData(name) {
         return new Promise(function (resolve, reject) {
-            let newChampion;
             request({
                 method: "GET",
                 url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
