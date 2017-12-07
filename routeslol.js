@@ -23,6 +23,7 @@ module.exports = router => {
 		}, function(err, response, body) {
             const keys = Object.keys(body.data);
             for(let i = 0; i < keys.length; i++){
+                console.log(keys[i] + " fghfh");
                 request({
                     method: "GET",
                     url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/"+keys[i]+".json",
