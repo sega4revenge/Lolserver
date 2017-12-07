@@ -8,11 +8,11 @@ const assert = require("assert");
 
 const url = "mongodb://sega:sega4deptrai@45.77.36.109:27017/lol?authSource=admin";
 module.exports = router => {
-    function getData(url) {
+    function getData(name) {
         return new Promise(function (resolve, reject) {
             request({
                 method: "GET",
-                url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + keys[i] + ".json",
+                url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                 json: true
             }, function (err, response, body) {
                 if(err) reject({status: 500, message: err.message});
@@ -38,11 +38,11 @@ module.exports = router => {
             const keys = Object.keys(body.data);
             const promises = [];
             for (let i = 0; i < keys.length; i++) {
-                promises .push(getData("http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + keys[i] + ".json"));
+                promises .push(getData(keys[i]));
             }
             Promise.all(promises)
                 .then(result => {
-                  console.log(result)
+                  console.log(result);
                 })
                 .catch(err => {
                     console.log(err);
