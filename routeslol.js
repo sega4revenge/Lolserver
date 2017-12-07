@@ -18,7 +18,7 @@ module.exports = router => {
                 if(err) reject({status: 500, message: err.message});
                 resolve({
                     status: 202,
-                    message: body.data
+                    message: body.data[name].name
                 });
             })
             // place here your logic
