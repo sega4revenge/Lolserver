@@ -21,8 +21,9 @@ module.exports = router => {
 			url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
 			json: true
 		}, function(err, response, body) {
-            var obj = JSON.parse(body);
-			console.log(obj.data);
+            console.log(body.data);
+            const obj = JSON.parse(body);
+            console.log(obj.data);
             var keys = Object.keys(obj.data);
             console.log('obj contains ' + keys.length + ' keys: '+  keys);
 			res.json(body);
