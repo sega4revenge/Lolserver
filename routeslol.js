@@ -3,6 +3,7 @@
 
 const request = require("request");
 const skin = new require("./models/skin");
+const champion = new require("./models/champion");
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const async = require("async");
@@ -29,7 +30,49 @@ module.exports = router => {
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
                         json: true
                     }, function (err, response, body) {
-                        console.log(name);
+                        let newChampion = new champion({
+                            id             : body.data[name].id,
+                            key : body.data[name].key,
+                            name :body.data[name].name,
+                            title    : body.data[name].title,
+                            imageAvatar : "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/"+name+".png",
+                            lore :  body.data[name].lore,
+                            blurb :  body.data[name].blurb,
+                            partype :  body.data[name].partype,
+                            info : {
+                                attack :  body.data[name].info.attack,
+                                defense : body.data[name].info.defense,
+                                magic : body.data[name].info.magic,
+                                difficulty : body.data[name].info.difficulty
+                            },
+                            stats : {
+                                armor : body.data[name].stats.armor,
+                                armorperlevel : body.data[name].stats.armorperlevel,
+                                attackdamage : body.data[name].stats.attackdamage,
+                                attackdamageperlevel: body.data[name].stats.attackdamageperlevel,
+                                attackrange : body.data[name].stats.attackrange,
+                                attackspeedoffset : body.data[name].stats.attackspeedoffset,
+                                attackspeedperlevel : body.data[name].stats.attackspeedperlevel,
+                                crit : body.data[name].stats.crit,
+                                critperlevel : body.data[name].stats.critperlevel,
+                                hp : body.data[name].stats.hp,
+                                hpperlevel : body.data[name].stats.hpperlevel,
+                                hpregen : body.data[name].stats.hpregen,
+                                hpregenperlevel : body.data[name].stats.hpregenperlevel,
+                                movespeed : body.data[name].stats.movespeed,
+                                mp : body.data[name].stats.mp,
+                                mpperlevel : body.data[name].stats.mpperlevel,
+                                mpregen : body.data[name].stats.mpregen,
+                                mpregenperlevel : body.data[name].stats.mpregenperlevel,
+                                spellblock : body.data[name].stats.spellblock,
+                                spellblockperlevel :body.data[name].stats.spellblockperlevel
+                            },
+                            passive : {
+                                name :body.data[name].passive.name,
+                                description : body.data[name].passive.description,
+                                imagePassive : body.data[name].passive.imagePassive
+                            }
+                        });
                         for (let i = 0; i < body.data[name].skins.length; i++) {
                             let newSkin = new skin({
                                 id: body.data[name].skins[i].id,
@@ -40,8 +83,9 @@ module.exports = router => {
                                 imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].name + "_" + body.data[name].skins[i].num + ".jpg"
                             });
                             newSkin.save();
+                            newChampion.skins.push(newSkin);
                         }
-
+                        newChampion.save();
                         page++;
                         next();
 
