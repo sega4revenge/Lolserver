@@ -178,7 +178,8 @@ module.exports = router => {
                                     champions[0].key = body.data[name].key;
                                     champions[0].name = body.data[name].name;
                                     champions[0].title = body.data[name].title;
-                                    champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png", champions[0].lore = body.data[name].lore;
+                                    champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png";
+                                        champions[0].lore = body.data[name].lore;
                                     champions[0].blurb = body.data[name].blurb;
                                     champions[0].partype = body.data[name].partype;
                                     champions[0].info.attack = body.data[name].info.attack;
