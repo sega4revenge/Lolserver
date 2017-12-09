@@ -293,6 +293,7 @@ module.exports = router => {
                             });
                         page++;
                         next();
+
                         /*    let newChampion = new champion({
                                 id             : body.data[name].id,
                                 key : body.data[name].key,
