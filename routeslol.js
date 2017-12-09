@@ -286,13 +286,16 @@ module.exports = router => {
                                                 reject({status: 500, message: err.message});
                                             });
 
+
                                     }
+                                    champions[0].save();
                                 }
                             })
                             .catch(err => {
                                 console.log(err.message);
 
                             });
+
                         page++;
                         next();
 
