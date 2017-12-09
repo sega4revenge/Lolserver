@@ -91,7 +91,7 @@ module.exports = router => {
                                         passive: {
                                             name: body.data[name].passive.name,
                                             description: body.data[name].passive.description,
-                                            imagePassive: "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/" + body.data[name].passive.image.full
+                                            imagePassive: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full
                                         }
                                     });
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
@@ -208,7 +208,7 @@ module.exports = router => {
                                     champions[0].stats.spellblockperlevel = body.data[name].stats.spellblockperlevel;
                                     champions[0].passive.name = body.data[name].passive.name;
                                     champions[0].passive.description = body.data[name].passive.description;
-                                    champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/" + body.data[name].passive.image.full;
+                                    champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
                                         spell.find({id: body.data[name].spells[i].id})
                                             .then(spells => {
@@ -223,6 +223,7 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
+                                                    champions[0].spells.splice(i,1);
                                                     champions[0].spells.push(newSpell);
 
                                                 } else {
@@ -334,7 +335,7 @@ module.exports = router => {
                                 passive : {
                                     name :body.data[name].passive.name,
                                     description : body.data[name].passive.description,
-                                    imagePassive : "http://ddragon.leagueoflegends.com/cdn/6.24.1/img/passive/" + body.data[name].passive.image.full
+                                    imagePassive : "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full
                                 }
                             });
                             for (let i = 0; i < body.data[name].spells.length; i++) {
