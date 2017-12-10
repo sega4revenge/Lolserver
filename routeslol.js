@@ -508,6 +508,8 @@ module.exports = router => {
 
                                             });
                                     }, function allDone(err) {
+                                        console.log(err);
+                                        console.log("done");
                                         async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
                                             // Model.update(condition, doc, callback)
                                             skin.find({id: obj.id})
