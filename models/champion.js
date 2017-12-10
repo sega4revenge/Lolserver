@@ -22,18 +22,15 @@ const championSchema = mongoose.Schema({
         en : String,
         vn : String
     },
-    allytips : [{
-        en : String,
-        vn : String
-    }],
+    allytips : {
+        en : [String],
+        vn : [String]
+    },
     enemytips : [{
-        en : String,
-        vn : String
+        en : [String],
+        vn : [String]
     }],
-    tags : [{
-        en : String,
-        vn : String
-    }],
+    tags : [String],
     partype : {
         en : String,
         vn : String

@@ -153,13 +153,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        newChampion.allytips.push({en : body.data[name].allytips[i]});
+                                        newChampion.allytips.en.push(body.data[name].allytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        newChampion.enemytips.push({en : body.data[name].enemytips[i]});
+                                        newChampion.enemytips.en.push({en : body.data[name].enemytips[i]});
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        newChampion.tags.push({en : body.data[name].tags[i]});
+                                        newChampion.tags.push(body.data[name].tags[i]);
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -289,13 +289,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        champions[0].allytips[i].en = body.data[name].enemytips[i];
+                                        champions[0].allytips.en[i] = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        champions[0].enemytips[i].en = body.data[name].enemytips[i];
+                                        champions[0].enemytips.en[i] = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        champions[0].tags[i].en = body.data[name].tags[i];
+                                        champions[0].tags[i] = body.data[name].tags[i];
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -345,6 +345,9 @@ module.exports = router => {
                                     champions[0].save();
                                 }
                             })
+                            .then(
+
+                            )
                             .catch(err => {
                                 console.log(err.message);
 
@@ -355,6 +358,7 @@ module.exports = router => {
 
 
                     })
+
                 },
                 function (err) {
                     // All things are done!
@@ -494,13 +498,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        newChampion.allytips.push({vn : body.data[name].allytips[i]});
+                                        newChampion.allytips.vn.push( body.data[name].allytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        newChampion.enemytips.push({vn : body.data[name].enemytips[i]});
+                                        newChampion.enemytips.vn.push(body.data[name].enemytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        newChampion.tags.push({vn : body.data[name].tags[i]});
+                                        newChampion.tags.push( body.data[name].tags[i]);
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -630,13 +634,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        champions[0].allytips[i].vn = body.data[name].enemytips[i];
+                                        champions[0].allytips.vn[i] = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        champions[0].enemytips[i].vn = body.data[name].enemytips[i];
+                                        champions[0].enemytips.vn[i]= body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        champions[0].tags[i].vn = body.data[name].tags[i];
+                                        champions[0].tags.vn[i] = body.data[name].tags[i];
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
