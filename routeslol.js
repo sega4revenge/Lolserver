@@ -530,7 +530,7 @@ module.exports = router => {
                                                     });
                                                     newSkin.save();
                                                     newChampion.skins.push(newSkin);
-
+                                                    console.log(newChampion.skins);
                                                 } else {
 
                                                     skins[0].id = body.data[name].skins[i].id;
