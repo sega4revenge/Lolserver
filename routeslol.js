@@ -42,7 +42,7 @@ module.exports = router => {
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/en_US/champion/" + name + ".json",
                         json: true
                     }, function (err, response, body) {
-                        console.log(name);
+
                         champion.find({id: body.data[name].id})
                             .then(champions => {
 
@@ -134,7 +134,9 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
+                                                    console.log(newSpell._id);
                                                     newChampion.spells.push(newSpell._id);
+                                                    console.log(newChampion.spells[0]);
 
                                                 } else {
 
