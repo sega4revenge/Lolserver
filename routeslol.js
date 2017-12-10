@@ -134,7 +134,7 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
-                                                    newChampion.spells.push(newSpell);
+                                                    newChampion.spells.push(newSpell._id);
 
                                                 } else {
 
@@ -142,7 +142,7 @@ module.exports = router => {
                                                     spells[0].name.en = body.data[name].spells[i].name;
                                                     spells[0].description.en = body.data[name].spells[i].description;
                                                     spells[0].tooltip.en = body.data[name].spells[i].tooltip;
-
+                                                    spells[0].save();
 
                                                 }
                                             })
@@ -185,7 +185,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    newChampion.skins.push(newSkin);
+                                                    newChampion.skins.push(newSkin._id);
 
                                                 } else {
 
@@ -196,7 +196,7 @@ module.exports = router => {
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
 
-
+                                                    skins[0].save();
                                                 }
                                             })
                                             .catch(err => {
@@ -278,7 +278,7 @@ module.exports = router => {
                                                     spells[0].name.en = body.data[name].spells[i].name;
                                                     spells[0].description.en = body.data[name].spells[i].description;
                                                     spells[0].tooltip.en = body.data[name].spells[i].tooltip;
-
+                                                    spells[0].save();
 
                                                 }
                                             })
@@ -331,6 +331,7 @@ module.exports = router => {
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
+                                                    skins[0].save();
 
 
                                                 }
@@ -530,7 +531,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    newChampion.skins.push(newSkin);
+                                                    newChampion.skins.push(newSkin._id);
 
                                                 } else {
 
@@ -615,7 +616,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     champions[0].spells.splice(i, 1);
-                                                    champions[0].spells.push(newSpell);
+                                                    champions[0].spells.push(newSpell._id);
 
                                                 } else {
 
@@ -666,7 +667,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    champions[0].skins.push(newSkin);
+                                                    champions[0].skins.push(newSkin._id);
 
                                                 } else {
 
