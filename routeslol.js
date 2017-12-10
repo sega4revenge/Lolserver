@@ -573,7 +573,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            console.log("done");
+                                            
                                             newChampion.save();
                                         });
                                     });
