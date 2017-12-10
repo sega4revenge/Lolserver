@@ -30,7 +30,10 @@ const championSchema = mongoose.Schema({
         en : String,
         vn : String
     }],
-    tags : [String],
+    tags : [{
+        en : String,
+        vn : String
+    }],
     partype : {
         en : String,
         vn : String
