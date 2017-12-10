@@ -479,7 +479,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell);
-
+                                                    console.log("a123214");
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
