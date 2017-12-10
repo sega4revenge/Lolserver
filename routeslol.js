@@ -466,6 +466,7 @@ module.exports = router => {
                                         newChampion.tags.push(body.data[name].tags[i]);
                                     }
                                     async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
+                                        console.log("a");
                                         // Model.update(condition, doc, callback)
                                         spell.find({id: obj.id})
                                             .then(spells => {
@@ -491,7 +492,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell._id);
-                                                    console.log("a");
+
 
                                                 } else {
 
