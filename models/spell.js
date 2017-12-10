@@ -5,10 +5,19 @@ const Schema = require("mongoose/lib/schema");
 
 const spellSchema = mongoose.Schema({
     id             : String,
-	name : String,
-    description : String,
+	name : {
+        en : String,
+        vn : String
+    },
+    description :{
+        en : String,
+        vn : String
+    },
     link : String,
-    tooltip : String
+    tooltip : {
+        en : String,
+        vn : String
+    }
 });
 
 mongoose.Promise = global.Promise;

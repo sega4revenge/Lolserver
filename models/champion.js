@@ -7,16 +7,34 @@ const championSchema = mongoose.Schema({
     id             : String,
     key : String,
     name : String,
-    title    : String,
+    title    : {
+        en : String,
+        vn : String
+    },
     price    : String,
     imageAvatar : String,
     skins : [{type: Schema.Types.ObjectId, ref: 'skin'}],
-    lore : String,
-    blurb : String,
-    allytips : [String],
-    enemytips : [String],
+    lore : {
+        en : String,
+        vn : String
+    },
+    blurb : {
+        en : String,
+        vn : String
+    },
+    allytips : [{
+        en : String,
+        vn : String
+    }],
+    enemytips : [{
+        en : String,
+        vn : String
+    }],
     tags : [String],
-    partype : String,
+    partype : {
+        en : String,
+        vn : String
+    },
     info : {
         attack : String,
         defense : String,
@@ -47,8 +65,14 @@ const championSchema = mongoose.Schema({
     },
     spells : [{type: Schema.Types.ObjectId, ref: 'spell'}],
     passive : {
-        name : String,
-        description : String,
+        name : {
+            en : String,
+            vn : String
+        },
+        description : {
+            en : String,
+            vn : String
+        },
         imagePassive : String
     }
 

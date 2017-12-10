@@ -53,12 +53,20 @@ module.exports = router => {
                                         id: body.data[name].id,
                                         key: body.data[name].key,
                                         name: body.data[name].name,
-                                        title: body.data[name].title,
+                                        title: {
+                                            vn: body.data[name].title
+                                        },
                                         price: "",
                                         imageAvatar: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png",
-                                        lore: body.data[name].lore,
-                                        blurb: body.data[name].blurb,
-                                        partype: body.data[name].partype,
+                                        lore: {
+                                            vn: body.data[name].lore
+                                        },
+                                        blurb: {
+                                            vn: body.data[name].blurb
+                                        },
+                                        partype: {
+                                            vn: body.data[name].partype
+                                        },
                                         info: {
                                             attack: body.data[name].info.attack,
                                             defense: body.data[name].info.defense,
@@ -88,8 +96,12 @@ module.exports = router => {
                                             spellblockperlevel: body.data[name].stats.spellblockperlevel
                                         },
                                         passive: {
-                                            name: body.data[name].passive.name,
-                                            description: body.data[name].passive.description,
+                                            name: {
+                                                vn: body.data[name].passive.name
+                                            },
+                                            description: {
+                                                vn: body.data[name].passive.description
+                                            },
                                             imagePassive: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full
                                         }
                                     });
@@ -101,10 +113,16 @@ module.exports = router => {
 
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
-                                                        name: body.data[name].spells[i].name,
+                                                        name: {
+                                                            vn: body.data[name].spells[i].name
+                                                        },
                                                         link: "",
-                                                        description: body.data[name].spells[i].description,
-                                                        tooltip: body.data[name].spells[i].tooltip
+                                                        description: {
+                                                            vn: body.data[name].spells[i].description
+                                                        },
+                                                        tooltip:{
+                                                            vn: body.data[name].spells[i].tooltip
+                                                        },
 
                                                     });
                                                     newSpell.save();
@@ -113,9 +131,9 @@ module.exports = router => {
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
-                                                    spells[0].name = body.data[name].spells[i].name;
-                                                    spells[0].description = body.data[name].spells[i].description;
-                                                    spells[0].tooltip = body.data[name].spells[i].tooltip;
+                                                    spells[0].name.vn = body.data[name].spells[i].name;
+                                                    spells[0].description.vn = body.data[name].spells[i].description;
+                                                    spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
 
 
                                                 }
@@ -127,13 +145,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        newChampion.allytips.push(body.data[name].allytips[i]);
+                                        newChampion.allytips.push({vn : body.data[name].allytips[i]});
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        newChampion.enemytips.push(body.data[name].enemytips[i]);
+                                        newChampion.enemytips.push({vn : body.data[name].enemytips[i]});
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        newChampion.tags.push(body.data[name].tags[i]);
+                                        newChampion.tags.push({vn : body.data[name].tags[i]});
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -144,7 +162,9 @@ module.exports = router => {
                                                     let newSkin = new skin({
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
-                                                        name: body.data[name].skins[i].name,
+                                                        name: {
+                                                            vn: body.data[name].skins[i].name
+                                                        },
                                                         type: "",
                                                         price: "",
                                                         link: "",
@@ -159,7 +179,7 @@ module.exports = router => {
 
                                                     skins[0].id = body.data[name].skins[i].id;
                                                     skins[0].num = body.data[name].skins[i].num;
-                                                    skins[0].name = body.data[name].skins[i].name;
+                                                    skins[0].name.vn = body.data[name].skins[i].name;
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
@@ -180,11 +200,11 @@ module.exports = router => {
                                     champions[0].id = body.data[name].id;
                                     champions[0].key = body.data[name].key;
                                     champions[0].name = body.data[name].name;
-                                    champions[0].title = body.data[name].title;
+                                    champions[0].title.vn = body.data[name].title;
                                     champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png";
-                                    champions[0].lore = body.data[name].lore;
-                                    champions[0].blurb = body.data[name].blurb;
-                                    champions[0].partype = body.data[name].partype;
+                                    champions[0].lore.vn = body.data[name].lore;
+                                    champions[0].blurb.vn = body.data[name].blurb;
+                                    champions[0].partype.vn = body.data[name].partype;
                                     champions[0].info.attack = body.data[name].info.attack;
                                     champions[0].info.defense = body.data[name].info.defense;
                                     champions[0].info.magic = body.data[name].info.magic;
@@ -210,8 +230,8 @@ module.exports = router => {
                                     champions[0].stats.mpregenperlevel = body.data[name].stats.mpregenperlevel;
                                     champions[0].stats.spellblock = body.data[name].stats.spellblock;
                                     champions[0].stats.spellblockperlevel = body.data[name].stats.spellblockperlevel;
-                                    champions[0].passive.name = body.data[name].passive.name;
-                                    champions[0].passive.description = body.data[name].passive.description;
+                                    champions[0].passive.name.vn = body.data[name].passive.name;
+                                    champions[0].passive.description.vn = body.data[name].passive.description;
                                     champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
                                         spell.find({id: body.data[name].spells[i].id})
@@ -221,10 +241,16 @@ module.exports = router => {
 
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
-                                                        name: body.data[name].spells[i].name,
+                                                        name: {
+                                                            vn: body.data[name].spells[i].name
+                                                        },
                                                         link: "",
-                                                        description: body.data[name].spells[i].description,
-                                                        tooltip: body.data[name].spells[i].tooltip
+                                                        description: {
+                                                            vn: body.data[name].spells[i].description
+                                                        },
+                                                        tooltip:{
+                                                            vn: body.data[name].spells[i].tooltip
+                                                        },
 
                                                     });
                                                     newSpell.save();
@@ -234,9 +260,9 @@ module.exports = router => {
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
-                                                    spells[0].name = body.data[name].spells[i].name;
-                                                    spells[0].description = body.data[name].spells[i].description;
-                                                    spells[0].tooltip = body.data[name].spells[i].tooltip;
+                                                    spells[0].name.vn = body.data[name].spells[i].name;
+                                                    spells[0].description.vn = body.data[name].spells[i].description;
+                                                    spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
 
 
                                                 }
@@ -248,13 +274,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        champions[0].allytips[i] = body.data[name].enemytips[i];
+                                        champions[0].allytips[i].vn = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        champions[0].enemytips[i] = body.data[name].enemytips[i];
+                                        champions[0].enemytips[i].vn = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        champions[0].tags[i] = body.data[name].tags[i];
+                                        champions[0].tags[i].vn = body.data[name].tags[i];
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -265,7 +291,9 @@ module.exports = router => {
                                                     let newSkin = new skin({
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
-                                                        name: body.data[name].skins[i].name,
+                                                        name: {
+                                                            vn: body.data[name].skins[i].name
+                                                        },
                                                         type: "",
                                                         price: "",
                                                         link: "",
@@ -280,7 +308,7 @@ module.exports = router => {
 
                                                     skins[0].id = body.data[name].skins[i].id;
                                                     skins[0].num = body.data[name].skins[i].num;
-                                                    skins[0].name = body.data[name].skins[i].name;
+                                                    skins[0].name.vn = body.data[name].skins[i].name;
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";

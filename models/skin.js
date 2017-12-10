@@ -6,9 +6,15 @@ const Schema = require("mongoose/lib/schema");
 const championSchema = mongoose.Schema({
     id             : String,
 	num : String,
-    name : String,
+    name : {
+        en : String,
+        vn : String
+    },
     chromas : String,
-    price : String,
+    price : {
+        en : String,
+        vn : String
+    },
     type: String,
     imageLoading : String,
     imageFull : String,
