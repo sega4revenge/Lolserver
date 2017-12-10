@@ -148,6 +148,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell._id);
+                                                    console.log(newSpell.id);
                                                     done();
 
                                                 } else {
