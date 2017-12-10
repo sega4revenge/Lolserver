@@ -507,93 +507,157 @@ module.exports = router => {
                                             return champions[0].save();
                                         }
                                     }).then(newChampion => {
-                                    for (let i = 0; i < body.data[name].spells.length; i++) {
-                                        spell.find({id: body.data[name].spells[i].id})
-                                            .then(spells => {
+                                    let i = 0;
+                                    async.whilst(function () {
+                                            return i < body.data[name].spells.length;
+                                        },
+                                        function (next) {
+                                            spell.find({id: body.data[name].spells[i].id})
+                                                .then(spells => {
 
-                                                if (spells.length === 0) {
+                                                    if (spells.length === 0) {
 
-                                                    let newSpell = new spell({
-                                                        id: body.data[name].spells[i].id,
-                                                        name: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].name
-                                                        },
-                                                        link: "",
-                                                        description: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].description
-                                                        },
-                                                        tooltip: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].tooltip
-                                                        },
+                                                        let newSpell = new spell({
+                                                            id: body.data[name].spells[i].id,
+                                                            name: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].name
+                                                            },
+                                                            link: "",
+                                                            description: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].description
+                                                            },
+                                                            tooltip: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].tooltip
+                                                            },
 
-                                                    });
-                                                    newSpell.save();
-                                                    console.log(i);
-                                                    newChampion.spells.push(newSpell._id);
+                                                        });
+                                                        newSpell.save();
 
-                                                } else {
+                                                        newChampion.spells.push(newSpell._id);
 
-                                                    spells[0].id = body.data[name].spells[i].id;
-                                                    spells[0].name.vn = body.data[name].spells[i].name;
-                                                    spells[0].description.vn = body.data[name].spells[i].description;
-                                                    spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
-                                                    spells[0].save();
+                                                    } else {
 
-                                                }
-                                            })
-                                            .catch(err => {
-                                                console.log(err.message);
+                                                        spells[0].id = body.data[name].spells[i].id;
+                                                        spells[0].name.vn = body.data[name].spells[i].name;
+                                                        spells[0].description.vn = body.data[name].spells[i].description;
+                                                        spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
+                                                        spells[0].save();
 
-                                            });
+                                                    }
+                                                })
+                                                .catch(err => {
+                                                    console.log(err.message);
 
-                                    }
+                                                });
+
+
+                                            page++;
+                                            next();
+
+
+                                        });
+                                    /* for (let i = 0; i < body.data[name].spells.length; i++) {
+                                         spell.find({id: body.data[name].spells[i].id})
+                                             .then(spells => {
+
+                                                 if (spells.length === 0) {
+
+                                                     let newSpell = new spell({
+                                                         id: body.data[name].spells[i].id,
+                                                         name: {
+                                                             en: "",
+                                                             vn: body.data[name].spells[i].name
+                                                         },
+                                                         link: "",
+                                                         description: {
+                                                             en: "",
+                                                             vn: body.data[name].spells[i].description
+                                                         },
+                                                         tooltip: {
+                                                             en: "",
+                                                             vn: body.data[name].spells[i].tooltip
+                                                         },
+
+                                                     });
+                                                     newSpell.save();
+
+                                                     newChampion.spells.push(newSpell._id);
+
+                                                 } else {
+
+                                                     spells[0].id = body.data[name].spells[i].id;
+                                                     spells[0].name.vn = body.data[name].spells[i].name;
+                                                     spells[0].description.vn = body.data[name].spells[i].description;
+                                                     spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
+                                                     spells[0].save();
+
+                                                 }
+                                             })
+                                             .catch(err => {
+                                                 console.log(err.message);
+
+                                             });
+
+                                     }*/
                                     return newChampion.save();
                                 }).then(newChampion => {
+                                    let i = 0;
+                                    async.whilst(function () {
+                                            return i < body.data[name].skins.length;
+                                        },
+                                        function (next) {
+                                            skin.find({id: body.data[name].skins[i].id})
+                                                .then(skins => {
+
+                                                    if (skins.length === 0) {
+
+                                                        let newSkin = new skin({
+                                                            id: body.data[name].skins[i].id,
+                                                            num: body.data[name].skins[i].num,
+                                                            name: {
+                                                                en: "",
+                                                                vn: body.data[name].skins[i].name
+                                                            },
+                                                            type: "",
+                                                            price: {
+                                                                en: "",
+                                                                vn: ""
+                                                            },
+                                                            link: "",
+                                                            chromas: body.data[name].skins[i].chromas,
+                                                            imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
+                                                            imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
+                                                        });
+                                                        newSkin.save();
+                                                        newChampion.skins.push(newSkin._id);
+                                                        newChampion.save();
+                                                    } else {
+
+                                                        skins[0].id = body.data[name].skins[i].id;
+                                                        skins[0].num = body.data[name].skins[i].num;
+                                                        skins[0].name.vn = body.data[name].skins[i].name;
+                                                        skins[0].chromas = body.data[name].skins[i].chromas;
+                                                        skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
+                                                        skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
+                                                        skins[0].save();
+
+                                                    }
+                                                })
+                                                .catch(err => {
+                                                    console.log(err.message);
+
+                                                });
+
+
+                                            page++;
+                                            next();
+
+
+                                        });
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
-                                        skin.find({id: body.data[name].skins[i].id})
-                                            .then(skins => {
-
-                                                if (skins.length === 0) {
-
-                                                    let newSkin = new skin({
-                                                        id: body.data[name].skins[i].id,
-                                                        num: body.data[name].skins[i].num,
-                                                        name: {
-                                                            en: "",
-                                                            vn: body.data[name].skins[i].name
-                                                        },
-                                                        type: "",
-                                                        price: {
-                                                            en: "",
-                                                            vn: ""
-                                                        },
-                                                        link: "",
-                                                        chromas: body.data[name].skins[i].chromas,
-                                                        imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
-                                                        imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
-                                                    });
-                                                    newSkin.save();
-                                                    newChampion.skins.push(newSkin._id);
-                                                    newChampion.save();
-                                                } else {
-
-                                                    skins[0].id = body.data[name].skins[i].id;
-                                                    skins[0].num = body.data[name].skins[i].num;
-                                                    skins[0].name.vn = body.data[name].skins[i].name;
-                                                    skins[0].chromas = body.data[name].skins[i].chromas;
-                                                    skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-                                                    skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-                                                    skins[0].save();
-
-                                                }
-                                            })
-                                            .catch(err => {
-                                                console.log(err.message);
-
-                                            });
 
                                     }
                                 })
