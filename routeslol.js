@@ -529,7 +529,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    newChampion.skins.push(newSkin._id);
+                                                    newChampion.skins.push(newSkin);
 
                                                 } else {
 
@@ -614,7 +614,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     champions[0].spells.splice(i, 1);
-                                                    champions[0].spells.push(newSpell._id);
+                                                    champions[0].spells.push(newSpell);
 
                                                 } else {
 
@@ -665,7 +665,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    champions[0].skins.push(newSkin._id);
+                                                    champions[0].skins.push(newSkin);
 
                                                 } else {
 
@@ -687,6 +687,7 @@ module.exports = router => {
 
                                     }
                                     champions[0].save();
+                                    console.log(champions[0].spells);
                                 }
                             })
                             .catch(err => {
