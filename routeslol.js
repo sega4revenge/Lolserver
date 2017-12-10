@@ -222,6 +222,7 @@ module.exports = router => {
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
                                                         name: body.data[name].spells[i].name,
+                                                        link: "",
                                                         description: body.data[name].spells[i].description,
                                                         tooltip: body.data[name].spells[i].tooltip
 
@@ -265,6 +266,9 @@ module.exports = router => {
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
                                                         name: body.data[name].skins[i].name,
+                                                        type: "",
+                                                        price: "",
+                                                        link: "",
                                                         chromas: body.data[name].skins[i].chromas,
                                                         imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
