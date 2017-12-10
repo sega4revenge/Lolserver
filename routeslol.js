@@ -466,7 +466,7 @@ module.exports = router => {
                                         newChampion.tags.push(body.data[name].tags[i]);
                                     }
                                     async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
-                                        console.log("a");
+
                                         // Model.update(condition, doc, callback)
                                         spell.find({id: obj.id})
                                             .then(spells => {
@@ -509,8 +509,7 @@ module.exports = router => {
 
                                             });
                                     }, function allDone(err) {
-                                        console.log(err);
-                                        console.log("done");
+
                                         async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
                                             // Model.update(condition, doc, callback)
                                             skin.find({id: obj.id})
@@ -537,7 +536,7 @@ module.exports = router => {
                                                         });
                                                         newSkin.save();
                                                         newChampion.skins.push(newSkin._id);
-                                                        console.log("b");
+                                                        done();
                                                     } else {
 
                                                         skins[0].id = obj.id;
@@ -546,7 +545,7 @@ module.exports = router => {
                                                         skins[0].chromas = obj.chromas;
                                                         skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + obj.num + ".jpg";
                                                         skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg";
-
+                                                        done();
 
                                                     }
                                                 })
