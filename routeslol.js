@@ -134,9 +134,8 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
-                                                    console.log(newSpell._id);
-                                                    newChampion.spells.push(newSpell._id);
-                                                    console.log(newChampion.spells[0]);
+                                                    newChampion.spells.push(newSpell);
+
 
                                                 } else {
 
@@ -187,7 +186,7 @@ module.exports = router => {
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
                                                     });
                                                     newSkin.save();
-                                                    newChampion.skins.push(newSkin._id);
+                                                    newChampion.skins.push(newSkin);
 
                                                 } else {
 
@@ -348,9 +347,6 @@ module.exports = router => {
                                     champions[0].save();
                                 }
                             })
-                            .then(
-
-                            )
                             .catch(err => {
                                 console.log(err.message);
 
@@ -555,7 +551,7 @@ module.exports = router => {
                                     }
 
                                     newChampion.save();
-
+                                    console.log(newChampion.spells);
                                 } else {
                                     champions[0].id = body.data[name].id;
                                     champions[0].key = body.data[name].key;
