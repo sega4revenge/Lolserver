@@ -54,17 +54,21 @@ module.exports = router => {
                                         key: body.data[name].key,
                                         name: body.data[name].name,
                                         title: {
+                                            en: "",
                                             vn: body.data[name].title
                                         },
                                         price: "",
                                         imageAvatar: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png",
                                         lore: {
+                                            en: "",
                                             vn: body.data[name].lore
                                         },
                                         blurb: {
+                                            en: "",
                                             vn: body.data[name].blurb
                                         },
                                         partype: {
+                                            en: "",
                                             vn: body.data[name].partype
                                         },
                                         info: {
@@ -97,9 +101,11 @@ module.exports = router => {
                                         },
                                         passive: {
                                             name: {
+                                                en: "",
                                                 vn: body.data[name].passive.name
                                             },
                                             description: {
+                                                en: "",
                                                 vn: body.data[name].passive.description
                                             },
                                             imagePassive: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full
@@ -114,13 +120,16 @@ module.exports = router => {
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
                                                         name: {
+                                                            en: "",
                                                             vn: body.data[name].spells[i].name
                                                         },
                                                         link: "",
                                                         description: {
+                                                            en: "",
                                                             vn: body.data[name].spells[i].description
                                                         },
                                                         tooltip:{
+                                                            en: "",
                                                             vn: body.data[name].spells[i].tooltip
                                                         },
 
@@ -163,10 +172,14 @@ module.exports = router => {
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
                                                         name: {
+                                                            en: "",
                                                             vn: body.data[name].skins[i].name
                                                         },
                                                         type: "",
-                                                        price: "",
+                                                        price: {
+                                                            en : "",
+                                                            vn : ""
+                                                        },
                                                         link: "",
                                                         chromas: body.data[name].skins[i].chromas,
                                                         imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
@@ -242,13 +255,16 @@ module.exports = router => {
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
                                                         name: {
+                                                            en: "",
                                                             vn: body.data[name].spells[i].name
                                                         },
                                                         link: "",
                                                         description: {
+                                                            en: "",
                                                             vn: body.data[name].spells[i].description
                                                         },
                                                         tooltip:{
+                                                            en: "",
                                                             vn: body.data[name].spells[i].tooltip
                                                         },
 
@@ -292,10 +308,14 @@ module.exports = router => {
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
                                                         name: {
+                                                            en: "",
                                                             vn: body.data[name].skins[i].name
                                                         },
                                                         type: "",
-                                                        price: "",
+                                                        price: {
+                                                            en : "",
+                                                            vn : ""
+                                                        },
                                                         link: "",
                                                         chromas: body.data[name].skins[i].chromas,
                                                         imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
