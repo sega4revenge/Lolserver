@@ -454,6 +454,8 @@ module.exports = router => {
                                             imagePassive: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full
                                         }
                                     });
+
+                                    newChampion.save();
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
                                         spell.find({id: body.data[name].spells[i].id})
                                             .then(spells => {
@@ -479,7 +481,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell);
-                                                    console.log("a123214");
+                                                    newChampion.save();
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
@@ -532,7 +534,7 @@ module.exports = router => {
                                                     });
                                                     newSkin.save();
                                                     newChampion.skins.push(newSkin);
-
+                                                    newChampion.save();
                                                 } else {
 
                                                     skins[0].id = body.data[name].skins[i].id;
@@ -551,8 +553,7 @@ module.exports = router => {
                                             });
 
                                     }
-                                    console.log("abc");
-                                    newChampion.save();
+
 
                                 } else {
                                     champions[0].id = body.data[name].id;
@@ -617,14 +618,14 @@ module.exports = router => {
                                                     newSpell.save();
                                                     champions[0].spells.splice(i, 1);
                                                     champions[0].spells.push(newSpell);
-
+                                                    champions[0].save();
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
                                                     spells[0].name.vn = body.data[name].spells[i].name;
                                                     spells[0].description.vn = body.data[name].spells[i].description;
                                                     spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
-
+                                                    spells[0].save();
 
                                                 }
                                             })
@@ -635,13 +636,13 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        champions[0].allytips.vn[i] = body.data[name].enemytips[i];
+                                        champions[0].allytips.vn[i] = body.data[name].allytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
                                         champions[0].enemytips.vn[i] = body.data[name].enemytips[i];
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        champions[0].tags.vn[i] = body.data[name].tags[i];
+                                        champions[0].tags[i] = body.data[name].tags[i];
                                     }
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -668,7 +669,7 @@ module.exports = router => {
                                                     });
                                                     newSkin.save();
                                                     champions[0].skins.push(newSkin);
-
+                                                    champions[0].save();
                                                 } else {
 
                                                     skins[0].id = body.data[name].skins[i].id;
@@ -677,7 +678,7 @@ module.exports = router => {
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-
+                                                    skins[0].save();
 
                                                 }
                                             })
