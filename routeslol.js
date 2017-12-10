@@ -455,7 +455,7 @@ module.exports = router => {
                                         }
                                     });
 
-                                    newChampion.save();
+
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
                                         spell.find({id: body.data[name].spells[i].id})
                                             .then(spells => {
