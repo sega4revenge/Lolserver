@@ -215,6 +215,8 @@ module.exports = router => {
                                         }, function allDone(err) {
 
                                             newChampion.save();
+                                            page++;
+                                            next();
                                         });
                                     });
 
@@ -358,6 +360,8 @@ module.exports = router => {
                                         }, function allDone(err) {
 
                                             champions[0].save();
+                                            page++;
+                                            next();
                                         });
                                     });
 
@@ -369,8 +373,7 @@ module.exports = router => {
 
                             });
 
-                        page++;
-                        next();
+
 
 
                     })
