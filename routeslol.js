@@ -455,7 +455,16 @@ module.exports = router => {
                                         }
                                     });
 
+                                    for (let i = 0; i < body.data[name].allytips.length; i++) {
+                                        newChampion.allytips.vn.push(body.data[name].allytips[i]);
 
+                                    }
+                                    for (let i = 0; i < body.data[name].enemytips.length; i++) {
+                                        newChampion.enemytips.vn.push(body.data[name].enemytips[i]);
+                                    }
+                                    for (let i = 0; i < body.data[name].tags.length; i++) {
+                                        newChampion.tags.push(body.data[name].tags[i]);
+                                    }
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
                                         spell.find({id: body.data[name].spells[i].id})
                                             .then(spells => {
@@ -480,7 +489,6 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
-                                                    console.log(i);
                                                     newChampion.spells.push(newSpell._id);
 
                                                 } else {
@@ -489,7 +497,7 @@ module.exports = router => {
                                                     spells[0].name.vn = body.data[name].spells[i].name;
                                                     spells[0].description.vn = body.data[name].spells[i].description;
                                                     spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
-                                                    spells[0].save();
+
 
                                                 }
                                             })
@@ -499,16 +507,7 @@ module.exports = router => {
                                             });
 
                                     }
-                                    for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        newChampion.allytips.vn.push(body.data[name].allytips[i]);
 
-                                    }
-                                    for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        newChampion.enemytips.vn.push(body.data[name].enemytips[i]);
-                                    }
-                                    for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        newChampion.tags.push(body.data[name].tags[i]);
-                                    }
 
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
@@ -544,7 +543,7 @@ module.exports = router => {
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
                                                     skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-                                                    skins[0].save();
+
 
                                                 }
                                             })
@@ -554,7 +553,7 @@ module.exports = router => {
                                             });
 
                                     }
-
+                                newChampion.save();
 
                                 } else {
                                     champions[0].id = body.data[name].id;
