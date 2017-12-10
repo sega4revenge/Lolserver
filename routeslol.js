@@ -480,6 +480,7 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
+                                                    console.log(i);
                                                     newChampion.spells.push(newSpell._id);
                                                     newChampion.save();
                                                 } else {
