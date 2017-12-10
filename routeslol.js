@@ -212,7 +212,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            console.log("done");
+
                                             newChampion.save();
                                         });
                                     });
@@ -355,7 +355,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            console.log("done");
+
                                             champions[0].save();
                                         });
                                     });
@@ -716,7 +716,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            console.log("done");
+
                                             champions[0].save();
                                         });
                                     });
