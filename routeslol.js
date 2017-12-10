@@ -478,8 +478,8 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
-                                                    newChampion.spells.push(newSpell);
-
+                                                    newChampion.spells.push(newSpell._id);
+                                                    console.log(newChampion.spells);
                                                 } else {
 
                                                     spells[0].id = body.data[name].spells[i].id;
@@ -530,7 +530,7 @@ module.exports = router => {
                                                     });
                                                     newSkin.save();
                                                     newChampion.skins.push(newSkin);
-                                                    console.log(newChampion.skins);
+
                                                 } else {
 
                                                     skins[0].id = body.data[name].skins[i].id;
