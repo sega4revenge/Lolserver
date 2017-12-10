@@ -498,7 +498,7 @@ module.exports = router => {
 
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        newChampion.allytips.vn.push( body.data[name].allytips[i]);
+                                        newChampion.allytips.vn.push(body.data[name].allytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
                                         newChampion.enemytips.vn.push(body.data[name].enemytips[i]);
