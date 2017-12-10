@@ -491,7 +491,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell._id);
-                                                    console.log("b");
+                                                    console.log("a");
 
                                                 } else {
 
@@ -534,7 +534,7 @@ module.exports = router => {
                                                         });
                                                         newSkin.save();
                                                         newChampion.skins.push(newSkin._id);
-
+                                                        console.log("b");
                                                     } else {
 
                                                         skins[0].id = obj.id;
@@ -552,6 +552,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
+                                            console.log("done");
                                             newChampion.save();
                                         });
                                     });
