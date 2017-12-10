@@ -492,7 +492,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell._id);
-
+                                                    done();
 
                                                 } else {
 
@@ -500,7 +500,7 @@ module.exports = router => {
                                                     spells[0].name.vn = obj.name;
                                                     spells[0].description.vn = obj.description;
                                                     spells[0].tooltip.vn = obj.tooltip;
-
+                                                    done();
 
                                                 }
                                             })
