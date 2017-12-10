@@ -551,7 +551,7 @@ module.exports = router => {
                                     }
 
                                     newChampion.save();
-                                    console.log(newChampion.spells);
+                                    console.log("abc");
                                 } else {
                                     champions[0].id = body.data[name].id;
                                     champions[0].key = body.data[name].key;
