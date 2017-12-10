@@ -466,47 +466,50 @@ module.exports = router => {
                                         newChampion.tags.push(body.data[name].tags[i]);
                                     }
                                     for (let i = 0; i < body.data[name].spells.length; i++) {
-                                        spell.find({id: body.data[name].spells[i].id})
-                                            .then(spells => {
+                                        (function () {
+                                            spell.find({id: body.data[name].spells[i].id})
+                                                .then(spells => {
 
-                                                if (spells.length === 0) {
+                                                    if (spells.length === 0) {
 
-                                                    let newSpell = new spell({
-                                                        id: body.data[name].spells[i].id,
-                                                        name: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].name
-                                                        },
-                                                        link: "",
-                                                        description: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].description
-                                                        },
-                                                        tooltip: {
-                                                            en: "",
-                                                            vn: body.data[name].spells[i].tooltip
-                                                        },
+                                                        let newSpell = new spell({
+                                                            id: body.data[name].spells[i].id,
+                                                            name: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].name
+                                                            },
+                                                            link: "",
+                                                            description: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].description
+                                                            },
+                                                            tooltip: {
+                                                                en: "",
+                                                                vn: body.data[name].spells[i].tooltip
+                                                            },
 
-                                                    });
-                                                    newSpell.save();
-                                                    newChampion.spells.push(newSpell._id);
+                                                        });
+                                                        newSpell.save();
+                                                        newChampion.spells.push(newSpell._id);
+                                                        console.log("b");
 
-                                                } else {
+                                                    } else {
 
-                                                    spells[0].id = body.data[name].spells[i].id;
-                                                    spells[0].name.vn = body.data[name].spells[i].name;
-                                                    spells[0].description.vn = body.data[name].spells[i].description;
-                                                    spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
+                                                        spells[0].id = body.data[name].spells[i].id;
+                                                        spells[0].name.vn = body.data[name].spells[i].name;
+                                                        spells[0].description.vn = body.data[name].spells[i].description;
+                                                        spells[0].tooltip.vn = body.data[name].spells[i].tooltip;
 
 
-                                                }
-                                            })
-                                            .catch(err => {
-                                                console.log(err.message);
+                                                    }
+                                                })
+                                                .catch(err => {
+                                                    console.log(err.message);
 
-                                            });
-
+                                                });
+                                        })();
                                     }
+                                    console.log("a");
 
 
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
@@ -553,7 +556,7 @@ module.exports = router => {
                                             });
 
                                     }
-                                newChampion.save();
+                                    newChampion.save();
 
                                 } else {
                                     champions[0].id = body.data[name].id;
