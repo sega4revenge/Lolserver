@@ -37,6 +37,30 @@ module.exports = router => {
                 },
                 function (next) {
                     const name = keys[page];
+
+                },
+                function (err) {
+                    // All things are done!
+                });
+
+        })
+
+    });
+    router.get('/listchampion', function (req, res) {
+
+        console.log("bat dau");
+        request({
+            method: "GET",
+            url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
+            json: true
+        }, function (err, response, body) {
+            let page = 0;
+            const keys = Object.keys(body.data);
+            async.whilst(function () {
+                    return page < keys.length;
+                },
+                function (next) {
+                    const name = keys[page];
                     request({
                         method: "GET",
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/en_US/champion/" + name + ".json",
@@ -354,30 +378,7 @@ module.exports = router => {
                         next();
 
 
-                    })
-                },
-                function (err) {
-                    // All things are done!
-                });
-
-        })
-
-    });
-    router.get('/listchampionvn', function (req, res) {
-
-        console.log("bat dau");
-        request({
-            method: "GET",
-            url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion.json",
-            json: true
-        }, function (err, response, body) {
-            let page = 0;
-            const keys = Object.keys(body.data);
-            async.whilst(function () {
-                    return page < keys.length;
-                },
-                function (next) {
-                    const name = keys[page];
+                    });
                     request({
                         method: "GET",
                         url: "http://ddragon.leagueoflegends.com/cdn/7.24.1/data/vn_VN/champion/" + name + ".json",
@@ -696,6 +697,7 @@ module.exports = router => {
 
 
                     })
+
                 },
                 function (err) {
                     // All things are done!
