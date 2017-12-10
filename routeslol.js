@@ -391,7 +391,6 @@ module.exports = router => {
                             .then(champions => {
 
                                 if (champions.length === 0) {
-
                                     let newChampion = new champion({
                                         id: body.data[name].id,
                                         key: body.data[name].key,
@@ -498,13 +497,17 @@ module.exports = router => {
                                     }
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
                                         newChampion.allytips.vn.push(body.data[name].allytips[i]);
+                                        console.log("b");
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
                                         newChampion.enemytips.vn.push(body.data[name].enemytips[i]);
+                                        console.log("c");
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
                                         newChampion.tags.push( body.data[name].tags[i]);
+                                        console.log("d");
                                     }
+                                    console.log("a");
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
                                             .then(skins => {
@@ -551,7 +554,7 @@ module.exports = router => {
                                     }
 
                                     newChampion.save();
-                                    console.log("abc");
+
                                 } else {
                                     champions[0].id = body.data[name].id;
                                     champions[0].key = body.data[name].key;
