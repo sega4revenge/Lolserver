@@ -8,6 +8,7 @@ const championSchema = mongoose.Schema({
     key : String,
     name : String,
     title    : String,
+    price    : String,
     imageAvatar : String,
     skins : [{type: Schema.Types.ObjectId, ref: 'skin'}],
     lore : String,
