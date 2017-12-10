@@ -374,8 +374,7 @@ module.exports = router => {
 
                             });
 
-                        page++;
-                        next();
+
 
 
                     });
@@ -692,12 +691,12 @@ module.exports = router => {
 
                             });
 
-                        page++;
-                        next();
 
 
-                    })
 
+                    });
+                    page++;
+                    next();
                 },
                 function (err) {
                     // All things are done!
