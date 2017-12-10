@@ -156,7 +156,7 @@ module.exports = router => {
                                         newChampion.allytips.en.push(body.data[name].allytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        newChampion.enemytips.en.push({en : body.data[name].enemytips[i]});
+                                        newChampion.enemytips.en.push(body.data[name].enemytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
                                         newChampion.tags.push(body.data[name].tags[i]);
