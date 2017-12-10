@@ -54,6 +54,7 @@ module.exports = router => {
                                         key: body.data[name].key,
                                         name: body.data[name].name,
                                         title: body.data[name].title,
+                                        price: "",
                                         imageAvatar: "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png",
                                         lore: body.data[name].lore,
                                         blurb: body.data[name].blurb,
@@ -101,6 +102,7 @@ module.exports = router => {
                                                     let newSpell = new spell({
                                                         id: body.data[name].spells[i].id,
                                                         name: body.data[name].spells[i].name,
+                                                        link: "",
                                                         description: body.data[name].spells[i].description,
                                                         tooltip: body.data[name].spells[i].tooltip
 
@@ -143,6 +145,9 @@ module.exports = router => {
                                                         id: body.data[name].skins[i].id,
                                                         num: body.data[name].skins[i].num,
                                                         name: body.data[name].skins[i].name,
+                                                        type: "",
+                                                        price: "",
+                                                        link: "",
                                                         chromas: body.data[name].skins[i].chromas,
                                                         imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg",
                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg"
@@ -157,7 +162,7 @@ module.exports = router => {
                                                     skins[0].name = body.data[name].skins[i].name;
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-                                                        skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
+                                                    skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
 
 
                                                 }
@@ -177,7 +182,7 @@ module.exports = router => {
                                     champions[0].name = body.data[name].name;
                                     champions[0].title = body.data[name].title;
                                     champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/champion/" + name + ".png";
-                                        champions[0].lore = body.data[name].lore;
+                                    champions[0].lore = body.data[name].lore;
                                     champions[0].blurb = body.data[name].blurb;
                                     champions[0].partype = body.data[name].partype;
                                     champions[0].info.attack = body.data[name].info.attack;
@@ -222,7 +227,7 @@ module.exports = router => {
 
                                                     });
                                                     newSpell.save();
-                                                    champions[0].spells.splice(i,1);
+                                                    champions[0].spells.splice(i, 1);
                                                     champions[0].spells.push(newSpell);
 
                                                 } else {
@@ -274,7 +279,7 @@ module.exports = router => {
                                                     skins[0].name = body.data[name].skins[i].name;
                                                     skins[0].chromas = body.data[name].skins[i].chromas;
                                                     skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
-                                                        skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
+                                                    skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + body.data[name].skins[i].num + ".jpg";
 
 
                                                 }

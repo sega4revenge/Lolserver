@@ -12,7 +12,7 @@ const championSchema = mongoose.Schema({
     type: String,
     imageLoading : String,
     imageFull : String,
-    linkyoutube : String
+    link : String
 });
 
 mongoose.Promise = global.Promise;

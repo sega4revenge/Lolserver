@@ -7,6 +7,7 @@ const spellSchema = mongoose.Schema({
     id             : String,
 	name : String,
     description : String,
+    link : String,
     tooltip : String
 });
 
