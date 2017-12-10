@@ -506,7 +506,7 @@ module.exports = router => {
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
                                         newChampion.tags.push(body.data[name].tags[i]);
                                     }
-                                    console.log("abc");
+
                                     for (let i = 0; i < body.data[name].skins.length; i++) {
                                         skin.find({id: body.data[name].skins[i].id})
                                             .then(skins => {
@@ -551,7 +551,7 @@ module.exports = router => {
                                             });
 
                                     }
-
+                                    console.log("abc");
                                     newChampion.save();
 
                                 } else {
