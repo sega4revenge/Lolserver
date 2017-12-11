@@ -148,7 +148,7 @@ module.exports = router => {
                                                     });
                                                     newSpell.save();
                                                     newChampion.spells.push(newSpell._id);
-                                                    console.log(newSpell.id);
+
                                                     done();
 
                                                 } else {
@@ -258,14 +258,17 @@ module.exports = router => {
                                     champions[0].passive.name.en = body.data[name].passive.name;
                                     champions[0].passive.description.en = body.data[name].passive.description;
                                     champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
+                                    champions[0].splice(0, champions[0].allytips.en.length);
+                                    champions[0].splice(0, champions[0].allytips.en.length);
+                                    champions[0].splice(0, champions[0].allytips.en.length);
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                        champions[0].allytips.en[i] = body.data[name].allytips[i];
+                                        champions[0].allytips.en.push(body.data[name].allytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                        champions[0].enemytips.en[i] = body.data[name].enemytips[i];
+                                        champions[0].enemytips.en.push(body.data[name].enemytips[i]);
                                     }
                                     for (let i = 0; i < body.data[name].tags.length; i++) {
-                                        champions[0].tags[i] = body.data[name].tags[i];
+                                        champions[0].tags.en.push(body.data[name].tags[i]);
                                     }
                                     async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
 
@@ -614,15 +617,17 @@ module.exports = router => {
                                                 champions[0].passive.name.vn = body.data[name].passive.name;
                                                 champions[0].passive.description.vn = body.data[name].passive.description;
                                                 champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
+                                                champions[0].splice(0, champions[0].allytips.vn.length);
+                                                champions[0].splice(0, body.data[name].enemytips.vn.length);
+                                                champions[0].splice(0, body.data[name].tags.vn.length);
                                                 for (let i = 0; i < body.data[name].allytips.length; i++) {
-                                                    champions[0].allytips.vn[i] = body.data[name].allytips[i];
-
+                                                    champions[0].allytips.vn.push(body.data[name].allytips[i]);
                                                 }
                                                 for (let i = 0; i < body.data[name].enemytips.length; i++) {
-                                                    champions[0].enemytips.vn[i] = body.data[name].enemytips[i];
+                                                    champions[0].enemytips.vn.push(body.data[name].enemytips[i]);
                                                 }
                                                 for (let i = 0; i < body.data[name].tags.length; i++) {
-                                                    champions[0].tags[i] = body.data[name].tags[i];
+                                                    champions[0].tags.vn.push(body.data[name].tags[i]);
                                                 }
                                                 async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
 
@@ -717,8 +722,6 @@ module.exports = router => {
                                                     }, function allDone(err) {
 
                                                         champions[0].save();
-                                                        console.log( champions[0].allytips.vn[0]);
-                                                        console.log( champions[0].allytips.en[0]);
                                                         page++;
                                                         next();
 
