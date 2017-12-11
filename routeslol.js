@@ -717,7 +717,7 @@ module.exports = router => {
                                                     }, function allDone(err) {
 
                                                         champions[0].save();
-                                                        console.log( champions[0].allytips.vn[0]);
+                                                        champions[0].allytips.vn[0].save();
                                                         page++;
                                                         next();
 
