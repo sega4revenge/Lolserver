@@ -30,11 +30,11 @@ module.exports = router => {
             json: true
         }, function (err, response, body) {
             version = body[0];
-            console.log("http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json");
+            console.log(version);
             console.log("start en");
             request({
                 method: "GET",
-                url: "http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json",
+                url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`,
                 json: true
             }, function (err, response, body) {
                 let page = 0;
@@ -46,7 +46,7 @@ module.exports = router => {
                         const name = keys[page];
                         request({
                             method: "GET",
-                            url: "http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/" + name + ".json",
+                            url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/" + name + ".json`,
                             json: true
                         }, function (err, response, body) {
                             console.log(name + " en ");
@@ -64,7 +64,7 @@ module.exports = router => {
                                                 vn: ""
                                             },
                                             price: "",
-                                            imageAvatar: "http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png",
+                                            imageAvatar: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png`,
                                             lore: {
                                                 en: body.data[name].lore,
                                                 vn: ""
@@ -114,7 +114,7 @@ module.exports = router => {
                                                     en: body.data[name].passive.description,
                                                     vn: ""
                                                 },
-                                                imagePassive: "http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/" + body.data[name].passive.image.full
+                                                imagePassive: `http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/` + body.data[name].passive.image.full
                                             }
                                         });
 
@@ -233,7 +233,7 @@ module.exports = router => {
                                         champions[0].key = body.data[name].key;
                                         champions[0].name = body.data[name].name;
                                         champions[0].title.en = body.data[name].title;
-                                        champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png";
+                                        champions[0].imageAvatar = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/` + name + ".png";
                                         champions[0].lore.en = body.data[name].lore;
                                         champions[0].blurb.en = body.data[name].blurb;
                                         champions[0].partype.en = body.data[name].partype;
@@ -264,7 +264,7 @@ module.exports = router => {
                                         champions[0].stats.spellblockperlevel = body.data[name].stats.spellblockperlevel;
                                         champions[0].passive.name.en = body.data[name].passive.name;
                                         champions[0].passive.description.en = body.data[name].passive.description;
-                                        champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/" + body.data[name].passive.image.full;
+                                        champions[0].passive.imagePassive = `http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/` + body.data[name].passive.image.full;
                                         champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
                                         champions[0].enemytips.en.splice(0, champions[0].enemytips.en.length);
                                         champions[0].tags.splice(0, champions[0].tags.length);
@@ -392,7 +392,7 @@ module.exports = router => {
                         console.log("start vn");
                         request({
                             method: "GET",
-                            url: "http://ddragon.leagueoflegends.com/cdn/${version}/data/vn_VN/champion.json",
+                            url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/vn_VN/champion.json`,
                             json: true
                         }, function (err, response, body) {
                             let page = 0;
@@ -404,7 +404,7 @@ module.exports = router => {
                                     const name = keys[page];
                                     request({
                                         method: "GET",
-                                        url: "http://ddragon.leagueoflegends.com/cdn/${version}/data/vn_VN/champion/" + name + ".json",
+                                        url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/vn_VN/champion/` + name + ".json",
                                         json: true
                                     }, function (err, response, body) {
                                         console.log(name + " vn");
@@ -422,7 +422,7 @@ module.exports = router => {
                                                             vn: body.data[name].title
                                                         },
                                                         price: "",
-                                                        imageAvatar: "http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png",
+                                                        imageAvatar: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/` + name + ".png",
                                                         lore: {
                                                             en: "",
                                                             vn: body.data[name].lore
@@ -472,7 +472,7 @@ module.exports = router => {
                                                                 en: "",
                                                                 vn: body.data[name].passive.description
                                                             },
-                                                            imagePassive: "http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/" + body.data[name].passive.image.full
+                                                            imagePassive: `http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/` + body.data[name].passive.image.full
                                                         }
                                                     });
 
@@ -590,7 +590,7 @@ module.exports = router => {
                                                     champions[0].key = body.data[name].key;
                                                     champions[0].name = body.data[name].name;
                                                     champions[0].title.vn = body.data[name].title;
-                                                    champions[0].imageAvatar = "http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png";
+                                                    champions[0].imageAvatar = `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/` + name + ".png";
                                                     champions[0].lore.vn = body.data[name].lore;
                                                     champions[0].blurb.vn = body.data[name].blurb;
                                                     champions[0].partype.vn = body.data[name].partype;
@@ -621,7 +621,7 @@ module.exports = router => {
                                                     champions[0].stats.spellblockperlevel = body.data[name].stats.spellblockperlevel;
                                                     champions[0].passive.name.vn = body.data[name].passive.name;
                                                     champions[0].passive.description.vn = body.data[name].passive.description;
-                                                    champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/" + body.data[name].passive.image.full;
+                                                    champions[0].passive.imagePassive = `http://ddragon.leagueoflegends.com/cdn/${version}/img/passive/` + body.data[name].passive.image.full;
                                                     champions[0].allytips.vn.splice(0, champions[0].allytips.vn.length);
                                                     champions[0].enemytips.vn.splice(0, champions[0].enemytips.vn.length);
                                                     champions[0].tags.splice(0, champions[0].tags.length);
