@@ -258,9 +258,9 @@ module.exports = router => {
                                     champions[0].passive.name.en = body.data[name].passive.name;
                                     champions[0].passive.description.en = body.data[name].passive.description;
                                     champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
-                                    champions[0].splice(0, champions[0].allytips.en.length);
-                                    champions[0].splice(0, champions[0].allytips.en.length);
-                                    champions[0].splice(0, champions[0].allytips.en.length);
+                                    champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
+                                    champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
+                                    champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
                                     for (let i = 0; i < body.data[name].allytips.length; i++) {
                                         champions[0].allytips.en.push(body.data[name].allytips[i]);
                                     }
@@ -617,9 +617,9 @@ module.exports = router => {
                                                 champions[0].passive.name.vn = body.data[name].passive.name;
                                                 champions[0].passive.description.vn = body.data[name].passive.description;
                                                 champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
-                                                champions[0].splice(0, champions[0].allytips.vn.length);
-                                                champions[0].splice(0, body.data[name].enemytips.vn.length);
-                                                champions[0].splice(0, body.data[name].tags.vn.length);
+                                                champions[0].allytips.vn.splice(0, champions[0].allytips.vn.length);
+                                                champions[0].allytips.vn.splice(0, body.data[name].enemytips.vn.length);
+                                                champions[0].allytips.vn.splice(0, body.data[name].tags.vn.length);
                                                 for (let i = 0; i < body.data[name].allytips.length; i++) {
                                                     champions[0].allytips.vn.push(body.data[name].allytips[i]);
                                                 }
