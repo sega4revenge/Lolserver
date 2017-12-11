@@ -46,7 +46,7 @@ module.exports = router => {
                         const name = keys[page];
                         request({
                             method: "GET",
-                            url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/" + name + ".json`,
+                            url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/` + name + ".json",
                             json: true
                         }, function (err, response, body) {
                             console.log(name + " en ");
@@ -64,7 +64,7 @@ module.exports = router => {
                                                 vn: ""
                                             },
                                             price: "",
-                                            imageAvatar: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/" + name + ".png`,
+                                            imageAvatar: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/` + name + ".png",
                                             lore: {
                                                 en: body.data[name].lore,
                                                 vn: ""
