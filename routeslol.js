@@ -30,7 +30,7 @@ module.exports = router => {
             json: true
         }, function (err, response, body) {
             version = body[0];
-            console.log(version);
+            console.log("http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json");
             console.log("start en");
             request({
                 method: "GET",
