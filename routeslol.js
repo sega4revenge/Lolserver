@@ -380,7 +380,7 @@ module.exports = router => {
 
                 },
                 function (err) {
-                    // All things are done!
+                   console.log("ok")
                 });
 
         })
