@@ -616,7 +616,7 @@ module.exports = router => {
                                                 champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
                                                 for (let i = 0; i < body.data[name].allytips.length; i++) {
                                                     champions[0].allytips.vn[i] = body.data[name].allytips[i];
-                                                    console.log( champions[0].allytips.vn[i]);
+
                                                 }
                                                 for (let i = 0; i < body.data[name].enemytips.length; i++) {
                                                     champions[0].enemytips.vn[i] = body.data[name].enemytips[i];
@@ -717,6 +717,7 @@ module.exports = router => {
                                                     }, function allDone(err) {
 
                                                         champions[0].save();
+                                                        console.log( champions[0].allytips.vn[0]);
                                                         page++;
                                                         next();
 
