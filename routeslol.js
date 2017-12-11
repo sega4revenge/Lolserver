@@ -618,8 +618,8 @@ module.exports = router => {
                                                 champions[0].passive.description.vn = body.data[name].passive.description;
                                                 champions[0].passive.imagePassive = "http://ddragon.leagueoflegends.com/cdn/7.24.1/img/passive/" + body.data[name].passive.image.full;
                                                 champions[0].allytips.vn.splice(0, champions[0].allytips.vn.length);
-                                                champions[0].enemytips.vn.splice(0, body.data[name].enemytips.vn.length);
-                                                champions[0].tags.splice(0, body.data[name].tags.length);
+                                                champions[0].enemytips.vn.splice(0,champions[0].enemytips.vn.length);
+                                                champions[0].tags.splice(0, champions[0].tags.length);
                                                 for (let i = 0; i < body.data[name].allytips.length; i++) {
                                                     champions[0].allytips.vn.push(body.data[name].allytips[i]);
                                                 }
