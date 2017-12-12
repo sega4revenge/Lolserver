@@ -220,7 +220,7 @@ module.exports = router => {
                                                                         },
                                                                         link: "",
                                                                         chromas: obj.chromas,
-                                                                        imageLoading: {data : body,contentType: `image/png` },
+
                                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg"
                                                                     });
                                                                     newSkin.save();
