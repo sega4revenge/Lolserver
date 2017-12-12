@@ -201,7 +201,7 @@ module.exports = router => {
                                                                 console.log(error);
                                                                 if (!error && response.statusCode === 200) {
                                                                     body = new Buffer(body, 'binary');
-                                                                    console.log(body);
+
                                                                     // Here "body" can be affected to the "a.img.data"
                                                                     // var a = new A;
                                                                     // a.img.data = body;
@@ -220,11 +220,12 @@ module.exports = router => {
                                                                         },
                                                                         link: "",
                                                                         chromas: obj.chromas,
-
+                                                                        imageLoading:"abc",
                                                                         imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg"
                                                                     });
                                                                     newSkin.save();
                                                                     newChampion.skins.push(newSkin._id);
+                                                                    console.log(body + " fgjgfjgfk");
                                                                     done();
                                                                 }
                                                             });
