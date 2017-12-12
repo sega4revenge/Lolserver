@@ -138,6 +138,7 @@ module.exports = router => {
                                         for (let i = 0; i < body.data[name].tags.length; i++) {
                                             newChampion.tags.push(body.data[name].tags[i]);
                                         }
+                                        console.log("Aabc");
                                         async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
 
                                             // Model.update(condition, doc, callback)
@@ -184,7 +185,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            console.log("Aabc");
+
                                             async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
                                                 // Model.update(condition, doc, callback)
                                                 skin.find({id: obj.id})
