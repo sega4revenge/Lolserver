@@ -192,13 +192,12 @@ module.exports = router => {
                                                     .then(skins => {
 
                                                         if (skins.length === 0) {
-                                                            console.log("Abc");
+
                                                             request({
                                                                 url: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/` + body.data[name].id + "_" + obj.num + ".jpg",
                                                                 encoding: 'binary'
                                                             }, function(error, response, body) {
-                                                                console.log(body);
-                                                                console.log(error);
+
                                                                 if (!error && response.statusCode === 200) {
                                                                     body = new Buffer(body, 'binary');
 
@@ -358,26 +357,41 @@ module.exports = router => {
 
                                                         if (skins.length === 0) {
 
-                                                            let newSkin = new skin({
-                                                                id: obj.id,
-                                                                num: obj.num,
-                                                                name: {
-                                                                    en: obj.name,
-                                                                    vn: ""
-                                                                },
-                                                                type: "",
-                                                                price: {
-                                                                    en: "",
-                                                                    vn: ""
-                                                                },
-                                                                link: "",
-                                                                chromas: obj.chromas,
-                                                                imageLoading: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + obj.num + ".jpg",
-                                                                imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg"
+                                                            request({
+                                                                url: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/` + body.data[name].id + "_" + obj.num + ".jpg",
+                                                                encoding: 'binary'
+                                                            }, function(error, response, body) {
+
+                                                                if (!error && response.statusCode === 200) {
+                                                                    body = new Buffer(body, 'binary');
+
+                                                                    // Here "body" can be affected to the "a.img.data"
+                                                                    // var a = new A;
+                                                                    // a.img.data = body;
+                                                                    // ....
+                                                                    let newSkin = new skin({
+                                                                        id: obj.id,
+                                                                        num: obj.num,
+                                                                        name: {
+                                                                            en: "",
+                                                                            vn: obj.name
+                                                                        },
+                                                                        type: "",
+                                                                        price: {
+                                                                            en: "",
+                                                                            vn: ""
+                                                                        },
+                                                                        link: "",
+                                                                        chromas: obj.chromas,
+                                                                        imageLoading:"abc",
+                                                                        imageFull: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg"
+                                                                    });
+                                                                    newSkin.save();
+                                                                    champions[0].skins.push(newSkin._id);
+                                                                    console.log(body + " fgjgfjgfk");
+                                                                    done();
+                                                                }
                                                             });
-                                                            newSkin.save();
-                                                            champions[0].skins.push(newSkin._id);
-                                                            done();
                                                         } else {
 
                                                             skins[0].id = obj.id;
