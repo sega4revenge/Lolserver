@@ -36,4 +36,36 @@ exports.championUser = (name) =>
 			});
 
 	});
+exports.fullChampions = () =>
 
+    new Promise((resolve, reject) => {
+
+
+        champion.find()
+            .populate({
+                path: "skins spells"
+            })
+            .then(champions => {
+
+                if (champions.length === 0) {
+
+                    reject({status: 404, message: "Champion Not Found !"});
+
+                } else {
+
+                    return champions;
+
+
+                }
+            })
+            .then(champion => {
+
+                resolve({status: 200, champion:champion});
+            })
+
+            .catch(err => {
+                console.log(err.message);
+                reject({status: 500, message: err.message});
+            });
+
+    });
