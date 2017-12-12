@@ -138,7 +138,7 @@ module.exports = router => {
                                         for (let i = 0; i < body.data[name].tags.length; i++) {
                                             newChampion.tags.push(body.data[name].tags[i]);
                                         }
-                                        console.log("Aabc");
+
                                         async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
 
                                             // Model.update(condition, doc, callback)
@@ -356,40 +356,48 @@ module.exports = router => {
                                                     .then(skins => {
 
                                                         if (skins.length === 0) {
-                                                                        console.log("http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + obj.num + ".jpg");
+
                                                             request({
                                                                 url: "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" +name+ "_" + obj.num + ".jpg",
                                                                 encoding: 'binary'
                                                             }, function(error, response, body) {
 
                                                                 if (!error && response.statusCode === 200) {
-                                                                    body = new Buffer(body, 'binary');
 
-                                                                    // Here "body" can be affected to the "a.img.data"
-                                                                    // var a = new A;
-                                                                    // a.img.data = body;
-                                                                    // ....
-                                                                    let newSkin = new skin({
-                                                                        id: obj.id,
-                                                                        num: obj.num,
-                                                                        name: {
-                                                                            en: "",
-                                                                            vn: obj.name
-                                                                        },
-                                                                        type: "",
-                                                                        price: {
-                                                                            en: "",
-                                                                            vn: ""
-                                                                        },
-                                                                        link: "",
-                                                                        chromas: obj.chromas,
-                                                                        imageLoading:{data : body , contentType: `image/png`},
-                                                                        imageFull: {data : body , contentType: `image/png`}
+                                                                    request({
+                                                                        url: "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" +name+ "_" + obj.num + ".jpg",
+                                                                        encoding: 'binary'
+                                                                    }, function(err, res, b) {
+
+                                                                        if (!err && res.statusCode === 200) {
+                                                                            body = new Buffer(b, 'binary');
+
+                                                                            // Here "body" can be affected to the "a.img.data"
+                                                                            // var a = new A;
+                                                                            // a.img.data = body;
+                                                                            // ....
+                                                                            let newSkin = new skin({
+                                                                                id: obj.id,
+                                                                                num: obj.num,
+                                                                                name: {
+                                                                                    en: "",
+                                                                                    vn: obj.name
+                                                                                },
+                                                                                type: "",
+                                                                                price: {
+                                                                                    en: "",
+                                                                                    vn: ""
+                                                                                },
+                                                                                link: "",
+                                                                                chromas: obj.chromas,
+                                                                                imageLoading:{data : body , contentType: `image/png`},
+                                                                                imageFull: {data : b , contentType: `image/png`}
+                                                                            });
+                                                                            newSkin.save();
+                                                                            champions[0].skins.push(newSkin._id);
+                                                                            done();
+                                                                        }
                                                                     });
-                                                                    newSkin.save();
-                                                                    champions[0].skins.push(newSkin._id);
-                                                                    console.log(body + " fgjgfjgfk");
-                                                                    done();
                                                                 }
                                                             });
                                                         } else {
