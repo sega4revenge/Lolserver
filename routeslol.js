@@ -59,7 +59,7 @@ module.exports = router => {
                             url: `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/` + name + ".json",
                             json: true
                         }, function (err, response, body) {
-                            console.log("Aabc");
+                            console.log(name + " en ");
                             champion.find({id: body.data[name].id})
                                 .then(champions => {
 
@@ -138,7 +138,7 @@ module.exports = router => {
                                         for (let i = 0; i < body.data[name].tags.length; i++) {
                                             newChampion.tags.push(body.data[name].tags[i]);
                                         }
-
+                                        console.log("Aabc");
                                         async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
 
                                             // Model.update(condition, doc, callback)
