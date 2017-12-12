@@ -191,7 +191,7 @@ module.exports = router => {
                                                     .then(skins => {
 
                                                         if (skins.length === 0) {
-
+                                                            console.log("Abc");
                                                             request({
                                                                 url: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/` + body.data[name].id + "_" + obj.num + ".jpg",
                                                                 encoding: 'binary'
