@@ -41,10 +41,10 @@ exports.fullChampions = () =>
     new Promise((resolve, reject) => {
 
 
-        champion.find({imageAvatar : 1, name : 1})
-            // .populate({
-            //     path: "skins spells"
-            // })
+        champion.find()
+            .populate({
+                path: "skins spells"
+            })
             .then(champions => {
 
                 if (champions.length === 0) {
@@ -60,7 +60,7 @@ exports.fullChampions = () =>
             })
             .then(champion => {
 
-                resolve({status: 200, champion:champion});
+                resolve({status: 200, listchampion:champion});
             })
 
             .catch(err => {
