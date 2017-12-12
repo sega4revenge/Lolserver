@@ -589,7 +589,7 @@ module.exports = router => {
                                                                         }, function(error, response, body) {
                                                                             if (!error && response.statusCode === 200) {
                                                                                 body = new Buffer(body, 'binary');
-
+                                                                                console.log(body);
                                                                                 // Here "body" can be affected to the "a.img.data"
                                                                                 // var a = new A;
                                                                                 // a.img.data = body;
