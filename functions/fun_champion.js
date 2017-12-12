@@ -41,10 +41,10 @@ exports.fullChampions = () =>
     new Promise((resolve, reject) => {
 
 
-        champion.find()
-            .populate({
-                path: "skins spells"
-            })
+        champion.find({imageAvatar : 1, name : 1})
+            // .populate({
+            //     path: "skins spells"
+            // })
             .then(champions => {
 
                 if (champions.length === 0) {
