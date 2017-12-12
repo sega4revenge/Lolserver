@@ -322,7 +322,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            champions[0].skins.clear();
+                                            champions[0].skins.splice(0,champions[0].skins.length);
                                             async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
 
                                                 // Model.update(condition, doc, callback)
