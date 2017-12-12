@@ -22,6 +22,16 @@ module.exports = router => {
 
 
     });
+    router.get('/getfullchampion', (req, res) => {
+
+        fun_champion.fullChampions()
+
+            .then(result => res.json(result))
+
+            .catch(err => res.status(err.status).json({message: err.message}));
+
+
+    });
     router.get('/listchampion', function (req, res) {
         let version;
         request({
