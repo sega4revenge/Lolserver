@@ -16,8 +16,8 @@ const championSchema = mongoose.Schema({
         vn: String
     },
     type: String,
-    imageLoading: {data: Buffer, contentType: String},
-    imageFull: {data: Buffer, contentType: String},
+    imageLoading: String,
+    imageFull: String,
     link: String
 });
 
