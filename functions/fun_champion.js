@@ -41,10 +41,7 @@ exports.fullChampions = () =>
     new Promise((resolve, reject) => {
 
 
-        champion.find()
-            .populate({
-                path: "skins spells"
-            })
+        champion.find({id :1})
             .then(champions => {
 
                 if (champions.length === 0) {
