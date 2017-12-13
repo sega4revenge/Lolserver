@@ -57,7 +57,7 @@ exports.fullChampions = () =>
             })
             .then(champion => {
 
-                resolve({status: 200, listchampion:champion.id});
+                resolve({status: 200, listchampion:champion});
             })
 
             .catch(err => {
