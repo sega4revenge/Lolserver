@@ -374,7 +374,7 @@ module.exports = router => {
                                                             skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + obj.num + ".jpg";
                                                             skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg";
                                                             skins[0].save();
-                                                            champions[0].spells.push(skins[0]._id);
+                                                            champions[0].skins.push(skins[0]._id);
                                                             done();
 
                                                         }
