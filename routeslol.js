@@ -290,7 +290,7 @@ module.exports = router => {
                                             champions[0].tags.push(body.data[name].tags[i]);
                                         }
                                         async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
-
+                                            champions[0].spells.splice(0,champions[0].spells.length);
                                             // Model.update(condition, doc, callback)
                                             spell.find({id: obj.id})
                                                 .then(spells => {
@@ -326,6 +326,7 @@ module.exports = router => {
                                                         spells[0].tooltip.en = obj.tooltip;
                                                         spells[0].image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full;
                                                         spells[0].save();
+                                                        champions[0].spells.push(spells[0]._id);
                                                         done();
 
                                                     }
@@ -373,6 +374,7 @@ module.exports = router => {
                                                             skins[0].imageLoading = "http://ddragon.leagueoflegends.com/cdn/img/champion/loading/" + body.data[name].id + "_" + obj.num + ".jpg";
                                                             skins[0].imageFull = "http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + body.data[name].id + "_" + obj.num + ".jpg";
                                                             skins[0].save();
+                                                            champions[0].spells.push(skins[0]._id);
                                                             done();
 
                                                         }
