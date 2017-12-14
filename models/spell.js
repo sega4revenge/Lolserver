@@ -17,7 +17,8 @@ const spellSchema = mongoose.Schema({
     tooltip : {
         en : String,
         vn : String
-    }
+    },
+    image : String
 });
 
 mongoose.Promise = global.Promise;

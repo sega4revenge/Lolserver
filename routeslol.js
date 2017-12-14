@@ -161,6 +161,7 @@ module.exports = router => {
                                                                 en: obj.tooltip,
                                                                 vn: ""
                                                             },
+                                                            image : `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full
 
                                                         });
                                                         newSpell.save();
@@ -174,6 +175,7 @@ module.exports = router => {
                                                         spells[0].name.en = obj.name;
                                                         spells[0].description.en = obj.description;
                                                         spells[0].tooltip.en = obj.tooltip;
+                                                        spells[0].image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full;
                                                         spells[0].save();
                                                         done();
 
@@ -310,7 +312,7 @@ module.exports = router => {
                                                                 en: obj.tooltip,
                                                                 vn: ""
                                                             },
-
+                                                            image : `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full
                                                         });
                                                         newSpell.save();
                                                         champions[0].spells.push(newSpell._id);
@@ -322,6 +324,7 @@ module.exports = router => {
                                                         spells[0].name.en = obj.name;
                                                         spells[0].description.en = obj.description;
                                                         spells[0].tooltip.en = obj.tooltip;
+                                                        spells[0].image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full;
                                                         spells[0].save();
                                                         done();
 
