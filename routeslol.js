@@ -280,6 +280,8 @@ module.exports = router => {
                                         champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
                                         champions[0].enemytips.en.splice(0, champions[0].enemytips.en.length);
                                         champions[0].tags.splice(0, champions[0].tags.length);
+                                        champions[0].spells.splice(0,champions[0].spells.length);
+                                        champions[0].skins.splice(0,champions[0].skins.length);
                                         for (let i = 0; i < body.data[name].allytips.length; i++) {
                                             champions[0].allytips.en.push(body.data[name].allytips[i]);
                                         }
@@ -290,7 +292,7 @@ module.exports = router => {
                                             champions[0].tags.push(body.data[name].tags[i]);
                                         }
                                         async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
-                                            champions[0].spells.splice(0,champions[0].spells.length);
+
                                             // Model.update(condition, doc, callback)
                                             spell.find({id: obj.id})
                                                 .then(spells => {
@@ -336,7 +338,7 @@ module.exports = router => {
 
                                                 });
                                         }, function allDone(err) {
-                                            champions[0].skins.splice(0,champions[0].skins.length);
+
                                             async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
 
                                                 // Model.update(condition, doc, callback)
