@@ -56,8 +56,12 @@ exports.fullChampions = () =>
                 }
             })
             .then(champion => {
+                const array = [];
+                for (let i = 0; i < champion; i++) {
+                    array.push(champion[i].id)
 
-                resolve({status: 200, listchampion:champion});
+                }
+                resolve({status: 200, listchampion:array});
             })
 
             .catch(err => {
