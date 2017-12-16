@@ -57,7 +57,7 @@ exports.fullChampions = () =>
             })
             .then(champion => {
                 const array = [];
-                for (let i = 0; i < champion; i++) {
+                for (let i = 0; i < champion.length; i++) {
                     array.push(champion[i].id);
                     console.log(champion[i].id)
 
