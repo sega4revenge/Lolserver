@@ -41,7 +41,7 @@ exports.fullChampions = () =>
     new Promise((resolve, reject) => {
 
 
-        champion.find({},{id :1,_id : 0})
+        champion.find({},{id :1,imageAvatar : 1,_id : 0})
             .then(champions => {
 
                 if (champions.length === 0) {
@@ -56,13 +56,13 @@ exports.fullChampions = () =>
                 }
             })
             .then(champion => {
-                const array = [];
+
                 for (let i = 0; i < champion.length; i++) {
-                    array.push(champion[i].id);
+
                     console.log(champion[i].id)
 
                 }
-                resolve({status: 200, listchampion:array});
+                resolve({status: 200, listchampion:champion});
             })
 
             .catch(err => {

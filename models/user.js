@@ -9,6 +9,7 @@ const championSchema = mongoose.Schema({
 	email : String,
     hashed_password    : String,
     created_at        : String,
+
     photoprofile : String,
     tokenfirebase : String,
 	temp_password : String,
