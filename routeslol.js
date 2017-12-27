@@ -161,7 +161,11 @@ module.exports = router => {
                                                                 en: obj.tooltip,
                                                                 vn: ""
                                                             },
-                                                            image : `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full
+                                                            image: `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full,
+                                                            cooldown: obj.cooldownBurn,
+                                                            cost: obj.costBurn,
+                                                            range: obj.rangeBurn
+
 
                                                         });
                                                         newSpell.save();
@@ -176,6 +180,9 @@ module.exports = router => {
                                                         spells[0].description.en = obj.description;
                                                         spells[0].tooltip.en = obj.tooltip;
                                                         spells[0].image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full;
+                                                        spells[0].cooldown = obj.cooldownBurn;
+                                                        spells[0].cost = obj.costBurn;
+                                                        spells[0].range = obj.rangeBurn;
                                                         spells[0].save();
                                                         done();
 
@@ -280,8 +287,8 @@ module.exports = router => {
                                         champions[0].allytips.en.splice(0, champions[0].allytips.en.length);
                                         champions[0].enemytips.en.splice(0, champions[0].enemytips.en.length);
                                         champions[0].tags.splice(0, champions[0].tags.length);
-                                        champions[0].spells.splice(0,champions[0].spells.length);
-                                        champions[0].skins.splice(0,champions[0].skins.length);
+                                        champions[0].spells.splice(0, champions[0].spells.length);
+                                        champions[0].skins.splice(0, champions[0].skins.length);
                                         for (let i = 0; i < body.data[name].allytips.length; i++) {
                                             champions[0].allytips.en.push(body.data[name].allytips[i]);
                                         }
@@ -314,7 +321,10 @@ module.exports = router => {
                                                                 en: obj.tooltip,
                                                                 vn: ""
                                                             },
-                                                            image : `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full
+                                                            image: `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full,
+                                                            cooldown: obj.cooldownBurn,
+                                                            cost: obj.costBurn,
+                                                            range: obj.rangeBurn
                                                         });
                                                         newSpell.save();
                                                         champions[0].spells.push(newSpell._id);
@@ -327,6 +337,9 @@ module.exports = router => {
                                                         spells[0].description.en = obj.description;
                                                         spells[0].tooltip.en = obj.tooltip;
                                                         spells[0].image = `http://ddragon.leagueoflegends.com/cdn/${version}/img/spell/` + obj.image.full;
+                                                        spells[0].cooldown = obj.cooldownBurn;
+                                                        spells[0].cost = obj.costBurn;
+                                                        spells[0].range = obj.rangeBurn;
                                                         spells[0].save();
                                                         champions[0].spells.push(spells[0]._id);
                                                         done();

@@ -18,7 +18,11 @@ const spellSchema = mongoose.Schema({
         en : String,
         vn : String
     },
-    image : String
+    image : String,
+    cooldown : String,
+    cost : String,
+    range : String
+
 });
 
 mongoose.Promise = global.Promise;
