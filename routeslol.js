@@ -459,8 +459,8 @@ module.exports = router => {
                                                     champions[0].enemytips.vn.push(body.data[name].enemytips[i]);
                                                 }
                                                 async.eachSeries(body.data[name].spells, function updateObject(obj, done) {
-                                                    if (obj.num == "0")
-                                                        obj.name = "Mặc định";
+
+
                                                     // Model.update(condition, doc, callback)
                                                     spell.find({id: obj.id})
                                                         .then(spells => {
@@ -481,6 +481,10 @@ module.exports = router => {
                                                 }, function allDone(err) {
 
                                                     async.eachSeries(body.data[name].skins, function updateObject(obj, done) {
+                                                        if (obj.num == "0")
+                                                        {
+                                                            obj.name = "Mặc định";
+                                                        }
                                                         // Model.update(condition, doc, callback)
                                                         skin.find({id: obj.id})
                                                             .then(skins => {
