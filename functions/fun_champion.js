@@ -41,7 +41,7 @@ exports.fullChampions = () =>
     new Promise((resolve, reject) => {
 
 
-        champion.find({},{id :1,imageAvatar : 1,name : 1 ,_id : 0})
+        champion.find({},{id :1,imageAvatar : 1,name : 1 ,_id : 0,tags:1})
             .then(champions => {
 
                 if (champions.length === 0) {
