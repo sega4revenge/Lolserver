@@ -7,9 +7,28 @@ const fun_champion = new require("./functions/fun_champion");
 const champion = new require("./models/champion");
 const spell = new require("./models/spell");
 const async = require("async");
-
+const config = require('../config/config.json');
 
 module.exports = router => {
+    router.post('/sendemail', (req, res) => {
+        const sender= req.body.sender;
+        const text = req.body.text;
+        console.log("sender" + sender);
+        const transporter = nodemailer.createTransport(`smtps://${config.email}:${config.password}@smtp.gmail.com`);
+
+        const mailOptions = {
+
+            from: `"${config.name}" <${config.email}>`,
+            to: 'sega4revenge@gmail.com',
+            subject: 'SMS From ' + sender,
+            html: text
+
+        };
+
+        return transporter.sendMail(mailOptions);
+
+
+    });
     router.get('/data/:id', (req, res) => {
 
         console.log("name champion" + req.params.id);
