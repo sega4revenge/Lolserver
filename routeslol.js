@@ -7,7 +7,7 @@ const fun_champion = new require("./functions/fun_champion");
 const champion = new require("./models/champion");
 const spell = new require("./models/spell");
 const async = require("async");
-const config = require('../config/config.json');
+const config = require('./config/config.json');
 
 module.exports = router => {
     router.post('/sendemail', (req, res) => {
