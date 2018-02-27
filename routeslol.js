@@ -8,7 +8,7 @@ const champion = new require("./models/champion");
 const spell = new require("./models/spell");
 const async = require("async");
 const config = require('./config/config.json');
-
+const nodemailer = require('nodemailer');
 module.exports = router => {
     router.post('/sendemail', (req, res) => {
         const sender= req.body.sender;
