@@ -13,13 +13,14 @@ module.exports = router => {
     router.post('/sendemail', (req, res) => {
         const sender= req.body.sender;
         const text = req.body.text;
+        const email = req.body.email;
         console.log("sender" + sender);
         const transporter = nodemailer.createTransport(`smtps://${config.email}:${config.password}@smtp.gmail.com`);
 
         const mailOptions = {
 
             from: `"${config.name}" <${config.email}>`,
-            to: 'sega4revenge@gmail.com',
+            to: email,
             subject: 'SMS From ' + sender,
             html: text
 
