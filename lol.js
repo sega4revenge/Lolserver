@@ -6,9 +6,10 @@ const bodyParser = require('body-parser');
 var fs = require('fs');
 var https = require('https');
 var httpsOptions = {
-    key: fs.readFileSync('./key.pem'),
-    cert: fs.readFileSync('./cert.pem'),
-    requestCert: false,
+    key: fs.readFileSync('./server.key'),
+    cert: fs.readFileSync('./server.crt'),
+    ca: fs.readFileSync('./ca.crt'),
+    requestCert: true,
     rejectUnauthorized: false
 };
 
