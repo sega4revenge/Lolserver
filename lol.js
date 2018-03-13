@@ -17,7 +17,7 @@ const router        = express.Router();
 const logger        = require('morgan');
 
 const server = https.createServer(httpsOptions,app);
-const port        = process.env.PORT || 80;
+const port        = process.env.PORT || 8000;
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
